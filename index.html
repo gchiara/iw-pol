@@ -7,8 +7,8 @@
 	<meta name="twitter:site" content="@TI_EU" />
 	<meta name="twitter:creator" content="@eucampaign" />
 	<meta property="og:url" content="http://www.integritywatch.eu" />
-	<meta property="og:title" content="EU Integrity Watch: monitor potential conflicts of interests" />
-	<meta property="og:description" content="Who’s #lobbying the EU Commission and how much are they spending? Check Integrity Watch" />
+	<meta property="og:title" content="Integrity Watch Polska" />
+	<meta property="og:description" content="" />
 	<meta property="og:image" content="http://www.integritywatch.eu/img/thumbnail.jpg" />
 	<meta property="fb:app_id" content="1611680135716224" />
 	<title>Integrity Watch Polska</title>
@@ -25,158 +25,6 @@
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
 
-	<style>
-		td.dc-table-column._4,
-		td.dc-table-column._5,
-		td.dc-table-column._6
-		{text-align:left;}
-
-		#mep_number {
-				margin-top: 0.1em;}
-		.l_data_container {
-			padding: 10px 15px;
-			margin: -10px;
-			background: #d4eaf6;
-		}
-		.l_data_container div {
-			border: none;
-			margin-top: 0;
-			padding-bottom: 0;
-			margin: 5px 0 5px 0;
-		}
-		.l_data_container_main {
-			background: #d4eaf6;
-			margin-bottom: 20 !important;
-			font-size: 18px;
-			text-align: center;
-		}
-		.l_data_container label {
-			font-weight: 600;
-		}
-		.l_data_container_main label {
-			color: #333;
-		}
-		.l_data_container_host {
-			//border: 4px solid #0f4c79 !important;
-			//border-right: 3px solid #0f4c79 !important;
-			border: 2px solid #0f4c79 !important;
-			margin-top: 0 !important;
-			//height: 230px;
-			padding: 20px 35px !important;
-			background: #fff;
-		}
-		.l_data_container_host .hr {
-			background: #0f4c79;
-			width: 100%;
-			height: 1px;
-			margin: 10px 0;
-		}
-		.l_data_container_guest {
-			border: 4px solid #8e1556 !important;
-			border-left: 3px solid #8e1556 !important;
-			margin-top: 0 !important;
-			//height: 230px;
-			padding: 10px 15px !important;
-			background: #fff;
-		}
-		.l_data_container_guest label, .l_data_container_guest .data_container_title {
-			color: #8e1556 !important;
-		}
-		.l_data_container_host label, .l_data_container_host .data_container_title {
-			color: #0f4c79 !important;
-		}
-		.data_container_title {
-			font-size: 15px;
-			font-weight: 800;
-			text-transform: uppercase;
-			
-		}
-		.legend div.individual::before {
-			background: #af0700 none repeat scroll 0 0;
-		}
-		.legend div.tradeunion::before {
-			background: #f6b862 none repeat scroll 0 0;
-		}
-		.legend div.companies::before {
-			background: #fcb000 none repeat scroll 0 0;
-		}
-		.otro::before {
-			background: #bbb;
-		}
-		.main_category svg, .hosttype svg, .categoria svg {
-			overflow: visible !important;
-		}
-		.navbar .navbar-nav > li > a {
-			width: 160px;
-		}
-		.topistitucion {
-			text-transform: capitalize;
-		}
-		#filter_wrap #currently_selected_text {
-			width: 150px;
-		}
-		.capitalize {
-			text-transform: capitalize;
-		}
-		div#ti_logo_container a#ti_logo {
-			background-image: url("./img/logo.png");
-			//height: 60px;
-			//width: 56%;
-			height: 75px;
-			position: relative;
-			top: -5px;
-			width: 100px;
-		}
-		.navbar .navbar-nav > li > a {
-			width: 130px;
-			padding-top: 12px;
-			padding-bottom: 12px;
-		}
-		.chart_box h3 {
-			text-transform: capitalize;
-		}
-		a#page_title {
-			border-left: 1px solid #fff;
-			color: #fff;
-			float: right;
-			font-size: 14px;
-			line-height: 1.2em;
-			margin: 15px 0;
-			margin-right: 15px;
-			margin-top: 7px;
-			padding-left: 15px;
-			padding-right: 20px;
-			text-transform: uppercase;
-			width: 40%;
-		}
-		div#ti_logo_container {
-			width: 230px;
-		}
-		.navbar-collapse ul.navbar-right li a {
-			line-height: 80px !important;
-		}
-		.dropdown-menu li{
-			margin: 1em 0;
-		}
-		.menu-link1 {
-			padding-top: 20px !important;
-		}
-		.menu-link2 {
-			padding-top: 30px !important;
-			width: 130px !important;
-		}
-		.menu-link2 .caret {
-			display: inline-block;
-			margin-left: 15px;
-		}
-		#termselect {
-			width: 100%;
-			padding: 10px 0;
-		}
-		.chart_box h3 {
-			text-transform: none;
-		}
-	</style>
 </head>
 
 <body>
@@ -590,39 +438,6 @@
 				return "#ecb005";
 			})
 			.ordering(function(d){return -d.value})
-			.dimension(dim)
-			.group(filteredGroup);
-
-			graph.xAxis().ticks(5).tickFormat(d3.format("d"));	
-		};
-		
-		
-		
-		function drawTerm () {
-			var dim = ndx.dimension (function(d) {
-				return d.term_office1;
-			});	
-			var group = dim.group().reduceSum(function(d) { return 1; });
-			var filteredGroup = (function(source_group) {
-				return {
-					all: function() {
-						return source_group.top(11).filter(function(d) {
-						return (d.key != "" && d.key != "Unknown" && d.key != "Not mentioned" && d.value != 0);
-					});
-				}
-			};
-		})(group);
-		var graph = dc.rowChart(".termoffice")   
-			.margins({top: 0, right: 3, bottom: 20, left: 3})
-			.height(120)
-			//.width(165)
-			.gap(3)
-			.x(d3.scale.ordinal())
-			.elasticX(true)
-			.colorCalculator(function(d, i) {
-				return "#ecb005";
-			})
-			//.ordering(function(d){return -d.value})
 			.dimension(dim)
 			.group(filteredGroup);
 
@@ -1087,7 +902,6 @@
 			var thisid = 0;
 		
 			_.each (events, function (d) {
-				//alert(d.toSource());
 				d.type = "";
 				if(d.NGO == 1){
 					d.type = "NGO";
@@ -1131,7 +945,6 @@
 					d.type = "Instytucja publiczna";
 				}
 				
-				//alert(d.type);
 				d.num = thisid;
 				thisid ++;
 				
@@ -1143,12 +956,10 @@
 		//End RenderLoaded
 		
 		//Load datasets
-		
 		d3.csv("data/poland2.csv", function(rows) {
 			events = rows;
 			renderLoaded();
 		});   
-		
 		d3.csv("data/poland2.csv", function (rows) {
 			events = rows;
 			renderLoaded();

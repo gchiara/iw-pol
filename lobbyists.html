@@ -12,15 +12,18 @@
 	<title>Integrity Watch Polska</title>
 	<link rel="shortcut icon" href="favicon.ico">
 	<link href="css/bower.min.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="./css/dc.css" />
+	
+
+    <link rel="stylesheet" type="text/css" href="./css/dc.css" />
 	<link rel="stylesheet" type="text/css" href="./css/style.css"/>
 	<script src="./js/jquery.min.js"></script>
 	<script src="./js/jquery.dataTables.min.js"></script>
 	<script src="./js/underscore-min.js"></script>
-	<script src="./js/crossfilter.min.js"></script>
+    <script src="./js/crossfilter2.min.js"></script>
 	<script src="./js/d3.js"></script>
 	<script src="./js/dc.js"></script>
-	<script src="./js/bootstrap.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    
 </head>
 
 <body>
@@ -41,8 +44,8 @@
 			
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li class="active" id="cm_tool_btn"><a href="" class="menu-link1"><strong>Posiedzenia komisji sejmowych</strong></a></li>
-						<li id="cm_tool_btn"><a href="lobbyists.html" class="menu-link1"><strong>Lobbyists</strong></a></li>
+                        <li id="cm_tool_btn"><a href="index.html" class="menu-link1"><strong>Posiedzenia komisji sejmowych</strong></a></li>
+						<li class="active" id="cm_tool_btn"><a href="lobbyists.html" class="menu-link1"><strong>Lobbyists</strong></a></li>
 						<li class="dropdown">
 							<a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle menu-link2" href="#" style="width: 120px;">Inne wersje<span class="caret"></span></a>
 							<ul class="dropdown-menu">
@@ -101,41 +104,10 @@
 		<div class="container_wrap" id="main_charts_wrap">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-4" style="margin-top:17px;">
-						<!-- TOP 10 ACTIVOS -->
-						<div class="chart_box" id="group_container">
-							<h3>Kadencje sejmu</h3>
-							<div class="info_chart">
-								<span class="info">info</span>
-								<p class="desc"></p>
-							</div>
-							<select id="termselect">
-								<option disabled selected value=""></option>
-								<option value="V">V</option>
-								<option value="VI">VI</option>
-								<option value="VII">VII</option>
-								<option value="VIII">VIII</option>
-							</select>
-							</select>
-							
-							<br class="clear" />
-						</div>
-						<!-- TOP 10 ACTIVOS -->
-						<div class="chart_box" id="group_container">
-							<h3>Komisje sejmowe</h3>
-							<div class="info_chart">
-								<span class="info">info</span>
-								<p class="desc"></p>
-							</div>
-							<div class="topcommittee chart-full"></div>
-							<div class="label">Liczba uczestników</div>
-							<br class="clear" />
-						</div>
-					</div>
 					<div class="col-md-4">
-						<!-- TOP 10 PASIVOS -->
-						<div class="chart_box">
-							<h3>Kto uczestniczy w posiedzeniach<br />komisji sejmowych?</h3>
+						<!-- TOP 10 ACTIVOS -->
+						<div class="chart_box" id="group_container">
+							<h3>Liczba profesjonalnych lobbystów</h3>
 							<div class="info_chart">
 								<span class="info">info</span>
 								<p class="desc"></p>
@@ -145,16 +117,29 @@
 							<br class="clear" />
 						</div>
 					</div>
-					<div class="col-md-4" style="margin-top:17px;">
-						<!-- CATEGORIA -->
-						<div class="chart_box" id="categoria">
-							<h3>Nazwa podmiotu<!--span class="info">info</span--></h3>
+					<div class="col-md-4">
+						<!-- TOP 10 PASIVOS -->
+						<div class="chart_box">
+							<h3>Rodzaj organizacji lobby?</h3>
 							<div class="info_chart">
 								<span class="info">info</span>
 								<p class="desc"></p>
 							</div>
-							
-							<div class="topentities"></div>
+							<!-- <div class="types piechart"></div> -->
+							<div class="wordcloud"></div>
+							<div class="label"></div>
+							<br class="clear" />
+						</div>
+					</div>
+					<div class="col-md-4">
+						<!-- CATEGORIA -->
+						<div class="chart_box" id="categoria">
+							<h3>Liczba rejestracji<!--span class="info">info</span--></h3>
+							<div class="info_chart">
+								<span class="info">info</span>
+								<p class="desc"></p>
+							</div>
+							<div class="registeryear"></div>
 							<div class="legend">
 							</div>
 							<br class="clear" />
@@ -183,11 +168,12 @@
 					<table class="table table-hover dc-data-grid tablesorter-bootstrap">
 						<thead>
 							<tr class="header">
-								<th class="header">Komisja</th>
-								<th class="header">Kadencja</th>
-								<th class="header">Posiedzenie</th>
-								<th class="header">Sprawa</th> 
-								<th class="header">Nazwa Podmiotu</th> 
+								<th class="header">Numer re-jestrze</th>
+								<th class="header">Nazwa lobbysty zawodowego</th>
+								<th class="header">Rejestr UE (T/N)</th>
+								<th class="header">Przedmiot lobbingu w EU rejestr</th> 
+                                <th class="header">Działalność w minister-stwach</th> 
+                                <th class="header">Działalność w Sejmie i Senacie</th>
 							</tr>
 						</thead>
 					</table>
@@ -320,7 +306,8 @@
 			.group(all);
 
 		nameEvent = ndx.dimension(function(d) {
-			return d.person.toLowerCase()+" "+d.subject.toLowerCase()+" "+d.affiliation.toLowerCase()+" "+d.entity.toLowerCase()+ " "+d.topic.toLowerCase()+ " " + "termoffice:"+d.term_office1+" ";
+			//return d.entityName.toLowerCase()+" "+d.category.toLowerCase()+" "+d.ministries.toLowerCase()+" "+d.representatives.toLowerCase()+ " "+d.clients.toLowerCase()+ " " + d.subject.toLowerCase();
+			return d.entityName.toLowerCase()+" "+d.category.toLowerCase()+" " + d.subject.toString().toLowerCase();
 		});
 
 		function rotateBarChartLabels(chart) {
@@ -329,18 +316,53 @@
 				.attr("transform", function(d) { return "rotate(-45, -4, 9) "; });
 		}
 
-		//Host Type Chart
+		//Type Chart
 		function drawHostType () {
+            /*
 			var dim = ndx.dimension (function(d) {
-				if(d.type && d.type != ""){
+                console.log(d.type);
+				if(d.type){
 					return d.type;   
 				}
-			});
-			var group   = dim.group().reduceSum(function(d) {   return 1; });
+			}, true);
+            */
+            var dim = ndx.dimension(function(d){ return d.type; }, true);
+			//var group   = dim.group().reduceSum(function(d) {   return 1; });
+            var group = dim.group();
 			var hosttypecolor = {			
 				"Other":"#bbbbbb"
 			};
-			var chart = dc.pieChart(".types")
+
+            
+			var graph = dc.rowChart(".types")   
+				.margins({top: 0, right: 3, bottom: 20, left: 3})
+				.height(450)
+				//.width(165)
+				.gap(3)
+				.x(d3.scale.ordinal())
+				.elasticX(true)
+				.colorCalculator(function(d, i) {
+					return "#ecb005";
+				})
+				.ordering(function(d){return -d.value})
+				.dimension(dim)
+				.group(group);
+
+			graph.xAxis().ticks(5).tickFormat(d3.format("d"));	
+		}
+
+        //Pie chart
+        function drawPie() {
+
+            var dim = ndx.dimension(function(d){ 
+                return d.type;
+            }, true);
+			var group   = dim.group().reduceSum(function(d) { return 1; });
+			var hosttypecolor = {			
+				"Other":"#bbbbbb"
+			};
+
+            var chart = dc.pieChart(".piechart")
 				.innerRadius(80).radius(140)
 				.cy(150)
 				.height(480)
@@ -371,67 +393,70 @@
 				}
 			}
 			//chart.ordering(function(d) { return rangeorder(d); });
-		}
-		
-		//Top entities
-		function drawEntities() {
-			var dim = ndx.dimension (function(d) {
-					if(d.entity && d.entity != ""){
-						return d.entity;  
-					}					
-			});
-			var group   = dim.group().reduceSum(function(d) {   
-				if(d.entity && d.entity != ""){
-					return 1;
-				}
-			});
+        }
 
-			var filteredGroup = (function(source_group) {
-				return {
-					all: function() {
-						return source_group.top(20).filter(function(d) {
-							return (d.key != "Not mentioned" && d.value != 0);
-						});
-					}
-				};
-			})(group);
-			var graph = dc.rowChart(".topentities")   
+		//Register year barchart
+		
+        function drawRegisterYear() {
+
+            var min = 2006;
+            var max = 2018;
+			
+			var dim = ndx.dimension(function(d){
+				return d.registerYear;
+			}, true);
+			var group   = dim.group().reduceSum(function(d) { return 1; });
+			
+			
+			
+			var hosttypecolor = {			
+				"Other":"#bbbbbb"
+			};
+			var graph = dc.barChart(".registeryear")   
 				.margins({top: 0, right: 3, bottom: 20, left: 3})
-				.height(520)
+				.height(300)
 				//.width(165)
-				.gap(1)
-				.x(d3.scale.ordinal())
-				.elasticX(true)
+				.gap(3)
+				//.x(d3.scale.ordinal())
+                .x(d3.scale.linear().domain([min-1,max+1]))
+				//.elasticX(true)
 				.colorCalculator(function(d, i) {
-					return "#84c0e9";
+					return "#ecb005";
 				})
+				//.brushOn(false)
 				.ordering(function(d){return -d.value})
 				.dimension(dim)
-				.group(filteredGroup);
-				
-			graph.xAxis().ticks(5).tickFormat(d3.format("d"));
-			
-			//chart.ordering(function(d) { return rangeorder(d); });
-		}
+				.group(group);
 
-		//Top 10 guests chart
-		function drawTopCommittee () {
-			var dim = ndx.dimension (function(d) {
-				return d.committee;
-			});	
-			var group = dim.group().reduceSum(function(d) { return 1; });
-			var filteredGroup = (function(source_group) {
-				return {
-					all: function() {
-						return source_group.top(11).filter(function(d) {
-							return (d.key != "" && d.key != "Unknown" && d.key != "Not mentioned" && d.value != 0);
-						});
-					}
-				};
-			})(group);
-			var graph = dc.rowChart(".topcommittee")   
+			graph.xAxis().ticks(5).tickFormat(d3.format("d"));	
+			
+		}
+		
+
+		//Test drawYear with row chart
+		/*
+		function drawRegisterYear() {
+            var dim = ndx.dimension(function(d){
+				//console.log(d);
+				//return d.registerYear;
+				var foo = [];
+
+				for (var i = 0; i < d.registerYear.length; i++) {
+					console.log(d.entityName + ' ' + d.registerYear[i]);
+					foo.push(d.registerYear[i]);
+				}
+				return foo;
+			}, true);
+			//var group   = dim.group().reduceSum(function(d) {   return 1; });
+            var group = dim.group();
+			var hosttypecolor = {			
+				"Other":"#bbbbbb"
+			};
+
+            
+			var graph = dc.rowChart(".registeryear")   
 				.margins({top: 0, right: 3, bottom: 20, left: 3})
-				.height(160)
+				.height(450)
 				//.width(165)
 				.gap(3)
 				.x(d3.scale.ordinal())
@@ -441,10 +466,48 @@
 				})
 				.ordering(function(d){return -d.value})
 				.dimension(dim)
-				.group(filteredGroup);
+				.group(group);
 
 			graph.xAxis().ticks(5).tickFormat(d3.format("d"));	
-		};
+		}
+		*/
+
+		function setword(wd) {
+			$("#search-input").val(wd);
+			var s = wd.toLowerCase();
+			nameEvent.filter(function (d) { 
+				return d.indexOf (s) !== -1;} );
+			$(".resetall").attr("disabled",false);
+			throttle();
+			var throttleTimer;
+			function throttle() {
+				window.clearTimeout(throttleTimer);
+				throttleTimer = window.setTimeout(function() {
+						dc.redrawAll();
+				}, 250);
+			}
+		}
+
+		//WordCloud Chart
+		function drawCloud() {
+			 var dim = ndx.dimension(function(d) {
+			  return d.subject || "";
+			 })
+			 var group   = dim.group().reduceSum(function(d) { return 1; });
+			 var graph =  dc.wordCloud(".wordcloud")
+			  .rotate(function() { return ~~(Math.random() * 2) * 90; })
+			  .size([300,450])
+			  .dimension(dim)
+			  .maxWords(50)
+			  .padding(5)
+			  .ordinalColors(['#133d82', '#2163ad', '#3893d1', '#84c0e8', '#cfecff'])
+			  .group(group)
+			  .scale(d3.scale.linear().domain([10,100]).range([6, 30]))
+			  .textAccessor(function(d) {return d.subject;})
+			  .onClick(function(d){setword(d.key);})
+			  .stopWords (/^()$/);
+
+		}
 
 		//Datatables table
 		function drawTable () {
@@ -457,14 +520,9 @@
 				  "orderable": true,
 				  "targets": 0,
 				  "defaultContent":"N/A",
-				  "className":"capitalize",
 				  "data": function (d, type, val, meta) {
 					 if (!d) return "";
-					 //return d.meeting_id; 
-					 if(d.committee_full != ""){
-						return d.committee_full;
-					 }
-					 return d.committee; 
+					 return d.id; 
 					},
 				  },{
 				  "searchable": false,
@@ -473,7 +531,7 @@
 				  "defaultContent":"N/A",
 				  "data": function (d, type, val, meta) {
 					 if (!d) return "";
-					 return d.term_office1; 
+					 return d.entityName; 
 					},
 				  },{
 				  "defaultContent":"N/A",
@@ -482,18 +540,16 @@
 				  "targets": 2,
 				  "data": function (d, type, val, meta) {
 					 if (!d) return "";
-					 //return d.person; 
-					 return d.meeting_id;
+					 return d.Euregister;
 					}
 				  },{
 				  "defaultContent":"N/A",
 				  "searchable": false,
 				  "orderable": true,
-				  "type":"date-eu",
 				  "targets": 3,
 				  "data": function(d) {
 					 if (!d) return "";
-					 return d.subject;
+					 return d.category;
 					},
 				  },
 				   {
@@ -503,7 +559,17 @@
 				  "targets": 4,
 				  "data": function (d, type, val, meta) {
 					 if (!d) return "";
-					 return d.entity; 
+					 return d.ministries; 
+					}
+				  },
+                  {
+				  "defaultContent":"N/A",
+				  "searchable": false,
+				  "orderable": true,
+				  "targets": 5,
+				  "data": function (d, type, val, meta) {
+					 if (!d) return "";
+					 return d.parliamentActivity; 
 					}
 				  }
 				],
@@ -530,25 +596,25 @@
 			function format (d) {				
 				if (!d) return "no data";
 
+                var entityData = _.filter(events,function (m) { return m.entityName == d.entityName  });
+
 				var s  = "<div class='l_data_container row'>";
 				
 				s += "<div class='col-md-12 l_data_container_host'>";
-				s += "<div class='l_name' style='text-align:center;margin-bottom:30px;'><label><strong>SPRAWA</strong></label><br />"+d.subject+"</div>";
+				s += "<div class='l_name' style='text-align:center;margin-bottom:30px;'><label><strong>"+d.entityName+"</strong></label></div>";
 				s += "<div class='data_container_title' style='text-align:center;'></div>";
 				
-				s += "<div class='l_name'><label>Kadencja:</label> "+d.term_office1+"</div>";
-				s += "<div class='l_name'><label>Komisja:</label> "+d.committee+"</div>";
-				s += "<div class='l_name'><label>Posiedzenie:</label> "+d.meeting_id+"</div>";
-				s += "<div class='hr'></div>";
-				s += "<div class='l_name'><label>Zewnętrzni uczestnicy:</label> "+d.person+"</div>";
-				s += "<div class='l_name'><label>Funkcja/ stanowisko:</label> "+d.affiliation+"</div>";
-				s += "<div class='l_name'><label>Nazwa podmiotu:</label> "+d.entity+"</div>";
-				s += "<div class='l_name'><label>Kategoria:</label> "+d.type+"</div>";
+				s += "<table><thead><tr><th>Przedstawiciele lob-bysty zawodowego w Sejmie i Senacie</th><th>Klienci</th><th>Data uz-yskania przepustki</th><th>Data wygaśnięcie przepustki</th><th>Przedmiot lobbingu</th></tr></thead><tbody>";
+                 _.each (entityData, function (r) {
+					s += "<tr><td>"+r.representatives+"</td><td>"+r.clients+"</td><td>"+r.registerDate+"</td><td>"+r.expirationDate+"</td><td>"+r.subject+"</td></tr>";
+                });
+                s += "</tbody></table>";
 				
 				
 				s += "</div>";
 				s += "</div>";
 				return s;
+				
 			}	
 			//Datatables click function
 			datatable.on('click', 'button', function () {
@@ -636,20 +702,26 @@
 		}
 		//End datatable table function
 
+	
 	   function RefreshTable() {
 			dc.events.trigger(function () {
 				var alldata = evt.top(Infinity);
-				datatable.fnClearTable();
-				datatable.fnAddData(alldata);
-				datatable.fnDraw();
+				if(datatable){
+					datatable.fnClearTable();
+					datatable.fnAddData(alldata);
+					datatable.fnDraw();
+				}
 			});
 		}
+		
 
 		//Draw graphs
 		drawTable();
 		drawHostType();
-		drawTopCommittee();
-		drawEntities();
+        drawRegisterYear();
+    	//drawPie();
+		drawCloud();
+
 		dc.renderAll();  
 	}
 	//End grid function
@@ -657,69 +729,101 @@
 	$(function() {
 		
 		//Load datasets
-		d3.csv("data/poland2.csv", function (rows) {
+		d3.csv("./data/tab2new.csv", function (rows) {
+		//d3.csv("http://www.chiaragirardelli.net/other/tab2new.csv", function (rows) {
+			
 			events = rows;
 			//renderLoaded();
 			var dateFormat = d3.time.format("%d/%m/%Y");
 			var now = Date.now();
 			var a;
+
+
+			var subjectTypes = {
+				'st1': 'administracja i sprawy wewnêtrzne',
+				'st2': 'cyfryzacja i nowoczesne technologie',
+				'st3': 'kontrola pañstwa i prawa obywateli',
+				'st4': 'finanse i podatki',
+				'st5': 'energetyka',
+				'st6': 'gospodarka i handel',
+				'st7': 'obrona narodowa',
+				'st8': 'ochrona œrodowiska',
+				'st9': 'polityka spo³eczna i rynek pracy',
+				'st10': 'ochrona zdrowia',
+				'st11': 'rolnictwo',
+				'st12': 'transport i drogi',
+				'st13': 'infrastruktura i budownictwo',
+				'st14': 'samorz¹d terytorialny',
+				'st15': 'sprawiedliwoœæ i s¹downictwo',
+				'st16': 'sprawy zagraniczne',
+				'st17': 'sprawy europejskie',
+				'st18': 'sport i turystyka',
+				'st19': 'nauka i szkolnictwo wy¿sze',
+				'st20': 'edukacja',
+				'st21': 'kultura'
+			}
 			
-			//Loop through dataset and fix/adjust data
+			//Loop through dataset and fix/adjust data, also generate the main dataset with 1 entry per entity
 			var thisid = 0;
-			
+			var thisid2 = 0;
+
+			var events_singleEntry = [];
+
 			_.each (events, function (d) {
-				
-				d.type = "";
 
-				if(d.NGO == 1){
-					d.type = "NGO";
-				} else if(d.c_industry == 1){
-					d.type = "Organizacje branżowe/ izby";
-				} else if(d.c_employers == 1){
-					d.type = "Organizacja pracodawców";
-				} else if(d.c_trade == 1){
-					d.type = "Związek zawodowy";
-				} else if(d.c_company == 1){
-					d.type = "Firmy";
-				} else if(d.c_research == 1){
-					d.type = "Przedstawiciele z uczelni i instytutów naukowych";
-				} else if(d.c_gov == 1){
-					d.type = "Ministerstwo, rząd, prezydent";
-				} else if(d.c_parliament == 1){
-					d.type = "Sejm";
-				} else if(d.c_public == 1){
-					d.type = "Instytucja publiczna (np.. NIK)";
-				} else if(d.c_autonomy == 1){
-					d.type = "Samorząd";
-				} else if(d.c_lobbyst == 1){
-					d.type = "Lobbysta";
-				} else if(d.c_state == 1){
-					d.type = "Spółki skarbu państwa, przedsiębiorstwa państwowe";
-				} else if(d.c_parks == 1){
-					d.type = "Parki";
-				} else if(d.c_foreign == 1){
-					d.type = "Przedstawiciele obcych państw";
-				} else if(d.c_other == 1){
-					d.type = "Inne";
-				}
-
+                //Get year of registration date (Data uzyskania przepustki)
+                d.registerYear = '';
+                if(d.registerDate && d.registerDate.split('-').length > 1){
+                    d.registerYear = d.registerDate.split('-')[2];
+                }
 				
-				d.committee_full = "";
-				if(d.committee == "OSZ"){
-					d.committee_full = "Ochrony Środowiska, Zasobów Naturalnych i Leśnictwa";
-				}
-				
-				//Type fix
-				if(d.type == "Instytucja publiczna (np.. NIK)"){
-					d.type = "Instytucja publiczna";
+                d.type = [];
+                //Turning the separate category columns into usable array
+				for (var i = 1; i < 22; i++) { 
+					if(d['st'+i] == 1){
+						d.type.push(subjectTypes['st'+i]);
+					};
 				}
 				
 				d.num = thisid;
 				thisid ++;
+
+				//Check if entity entry already exists
+				var entityEntry = _.find(events_singleEntry,function (m) { return m.entityName == d.entityName  });
+				if(entityEntry){
+					if(d.registerYear !== ''){
+						if(entityEntry.registerYear.indexOf(d.registerYear) == -1){
+							entityEntry.registerYear.push(d.registerYear);
+						}
+					}
+					entityEntry.subject.push(d.subject);
+					entityEntry.type.concat(d.type);
+				} else {
+					//id	entityName	Euregister	category	ministries	parliamentActivity	representatives	clients	registerDate	expirationDate	subject
+					var newEntity = {
+						'id':d.id,
+						'entityName':d.entityName,
+						'Euregister':d.Euregister,
+						'category':d.category,
+						'ministries': d.ministries,
+						'parliamentActivity': d.parliamentActivity,
+						'registerYear': [d.registerYear],
+						'subject': [d.subject],
+						'type': d.type,
+						'num': thisid2
+					};
+					if(d.registerYear == ''){
+						newEntity.registerYear = [];
+					}
+					thisid2 ++;
+					events_singleEntry.push(newEntity);
+				}
+
 			});
 			//End loop through dataset
 			//Call grid function to create and display charts
-			grid ("#ec",events);
+			//grid("#ec",events);
+			grid('#ec',events_singleEntry);
 		}); 
 
 		//Search field functionality
@@ -733,7 +837,6 @@
 			function throttle() {
 				window.clearTimeout(throttleTimer);
 				throttleTimer = window.setTimeout(function() {
-					console.log ("redraw");
 						dc.redrawAll();
 				}, 250);
 			}
@@ -750,7 +853,6 @@
 			function throttle() {
 				window.clearTimeout(throttleTimer);
 				throttleTimer = window.setTimeout(function() {
-					console.log ("redraw");
 						dc.redrawAll();
 				}, 250);
 			}

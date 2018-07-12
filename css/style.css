@@ -1,12 +1,4 @@
-/* @override 
-	http://doi.ap:8888/css/style.css
-	http://localhost:8888/transp_doi/doi/css/style.css
-	http://doi.ap:8888/doifork/css/style.css
-	http://localhost:8888/transp_doi/doifork/css/style.css
-	http://doi.ap:8888/doi/css/style.css
-	http://doi.lattecreative.com/doi/css/style.css */
-
-@import url("http://fast.fonts.net/lt/1.css?apiType=css&c=7bacdeec-00ae-4450-bf23-75f7f74f9628&fontids=739810,739467");
+/*@import url("http://fast.fonts.net/lt/1.css?apiType=css&c=7bacdeec-00ae-4450-bf23-75f7f74f9628&fontids=739810,739467");*/
 @font-face{
 font-family:"Helvetica W02 Light";
 src:url("../fonts/739810/ff80873b-6ac3-44f7-b029-1b4111beac76.eot?#iefix");
@@ -55,7 +47,7 @@ h3{
 	font-size: 1.1em;
 }
 
-a{
+a {
 	-webkit-transition: all .15s ease-out 0s;	
 	-moz-transition: all .15s ease-out 0s;
 	transition: all .15s ease-out 0s;
@@ -262,6 +254,7 @@ nav.navbar{
 button.navbar-toggle{
 	border-radius: 0;
 	border: none;
+	margin-top: 20px;
 }
 
 div#ti_logo_container{
@@ -304,18 +297,48 @@ ul.nav.navbar-right li.active a{
 	padding: 0 3%!important;
 }
 
+.menu-link1 {
+	padding-top: 20px !important;
+}
+.menu-link2 {
+	padding-top: 30px !important;
+	width: 130px !important;
+}
+.menu-link2 .caret {
+	display: inline-block;
+	margin-left: 15px;
+}
+
 @media only screen and (max-width : 768px){
+	nav.navbar {
+		height: 70px;
+	}
+	nav.navbar li {
+		margin-bottom: 0;
+	}
+	.navbar-collapse.in {
+		overflow-y: hidden;
+	}
+	div#ti_logo_container {
+		height: 70px;
+		padding: 5px;
+		width: 220px !important;
+	}
+	.navbar-collapse ul.navbar-right li a {
+		line-height: auto !important;
+	}
 	.navbar-collapse{
 		z-index: 100000;
 		position: relative;
 		background: #2180c2;
 	}
-	
 	.navbar-collapse.collapse.in{
 		z-index: 100000;
 		background: #2180c2;
 	}
-	
+	.navbar-collapse .menu-link1, .navbar .navbar-nav > li > a {
+		width: 100% !important;
+	}
 	.navbar-collapse li{
 		border-bottom: 1px solid #1b6da6;
 	}
@@ -324,12 +347,10 @@ ul.nav.navbar-right li.active a{
 		margin-bottom: 0;
 		margin-top: 0;
 	}
-	
 	.navbar-collapse ul{
 		margin-bottom: 0;
 		margin-top: 0;
 	}
-	
 	.navbar-collapse .navbar-right a{
 		display: block;
 		height: 40px;
@@ -337,16 +358,24 @@ ul.nav.navbar-right li.active a{
 		color: #b9d9eb;
 		padding: 0 3%!important;
 	}
-	
 	.navbar-collapse ul.navbar-right li a{
 		display: block;
-		height: 40px;
-		line-height: 40px;
+		height: auto;
+		line-height: 100%;
 		color: #b9d9eb;
-		padding: 0 2%!important;
+		padding: 15px !important;
+	}
+	.menu-link1, .menu-link2, .navbar-right li a {
+		padding: 15px !important;
+	}
+	.dropdown-menu {
+		padding: 0;
+	}
+	.dropdown-menu li{
+		margin: 0 !important;
+		padding: 10px;
 	}
 }
-
 
 @media only screen and (min-width : 768px) {
 	nav.navbar{
@@ -414,6 +443,9 @@ ul.nav.navbar-right li.active a{
 		line-height: 92px!important;
 		padding: 0 1em!important;
 	}
+	.navbar-collapse ul.navbar-right li a {
+		line-height: 80px !important;
+	}
 }
 
 @media only screen and (min-width : 992px) {
@@ -439,6 +471,24 @@ ul.nav.navbar-right li.active a{
 		padding-right: 0;
 		border-left: 1px solid #FFF;
 	}
+}
+
+div#ti_logo_container a#ti_logo {
+	background-image: url("../img/ti_logo.png");
+	//height: 60px;
+	//width: 56%;
+	height: 75px;
+	position: relative;
+	top: -5px;
+	width: 100px;
+}
+.navbar .navbar-nav > li > a {
+	width: 130px;
+	padding-top: 12px;
+	padding-bottom: 12px;
+}
+.navbar .navbar-nav > li > a {
+	width: 160px;
 }
 
 /* HOME */
@@ -907,33 +957,6 @@ ul.nav.navbar-right li.active a{
 
 .group svg{
 }
-
-/* outside revenues */
-/* orange version * /
-.legend div._0:before{
-	background: #3695d8;
-}
-
-.legend div._1:before{
-	background: #5989b3;
-}
-
-.legend div._2:before{
-	background: #857c93;
-}
-
-.legend div._3:before{
-	background: #ae6e74;
-}
-
-.legend div._4:before{
-	background: #d76155;
-}
-
-.legend div._5:before{
-	background: #ff523a;
-} 
-*/
 
 /* blue version */
 .legend div._0:before{
@@ -1466,9 +1489,6 @@ td.dc-table-column._6
 .main_category svg, .hosttype svg, .categoria svg {
 	overflow: visible !important;
 }
-.navbar .navbar-nav > li > a {
-	width: 160px;
-}
 .topistitucion {
 	text-transform: capitalize;
 }
@@ -1477,20 +1497,6 @@ td.dc-table-column._6
 }
 .capitalize {
 	text-transform: capitalize;
-}
-div#ti_logo_container a#ti_logo {
-	background-image: url("./img/logo.png");
-	//height: 60px;
-	//width: 56%;
-	height: 75px;
-	position: relative;
-	top: -5px;
-	width: 100px;
-}
-.navbar .navbar-nav > li > a {
-	width: 130px;
-	padding-top: 12px;
-	padding-bottom: 12px;
 }
 .chart_box h3 {
 	text-transform: capitalize;
@@ -1512,22 +1518,8 @@ a#page_title {
 div#ti_logo_container {
 	width: 230px;
 }
-.navbar-collapse ul.navbar-right li a {
-	line-height: 80px !important;
-}
 .dropdown-menu li{
 	margin: 1em 0;
-}
-.menu-link1 {
-	padding-top: 20px !important;
-}
-.menu-link2 {
-	padding-top: 30px !important;
-	width: 130px !important;
-}
-.menu-link2 .caret {
-	display: inline-block;
-	margin-left: 15px;
 }
 #termselect {
 	width: 100%;

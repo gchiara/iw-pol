@@ -6,10 +6,10 @@
 	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:site" content="" />
 	<meta property="og:url" content="" />
-	<meta property="og:title" content="Integrity Watch Polska" />
+	<meta property="og:title" content="Profesjonalni lobbyści" />
 	<meta property="og:description" content="" />
 	<meta property="og:image" content="" />
-	<title>Integrity Watch Polska</title>
+	<title>Profesjonalni lobbyści</title>
 	<link rel="shortcut icon" href="favicon.ico">
 	<link href="css/bower.min.css" rel="stylesheet">
 	
@@ -26,7 +26,7 @@
     
 </head>
 
-<body>
+<body class="lobbyists-tab">
 	<nav class="navbar navbar-default" role="navigation">
 		<div class="container">
 				<div class="navbar-header">
@@ -45,7 +45,7 @@
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
                         <li id="cm_tool_btn"><a href="index.html" class="menu-link1"><strong>Posiedzenia komisji sejmowych</strong></a></li>
-						<li class="active" id="cm_tool_btn"><a href="lobbyists.html" class="menu-link1"><strong>Lobbyists</strong></a></li>
+						<li class="active" id="cm_tool_btn"><a href="lobbyists.html" class="menu-link1"><strong>Profesjonalni lobbyści</strong></a></li>
 						<li class="dropdown">
 							<a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle menu-link2" href="#" style="width: 120px;">Inne wersje<span class="caret"></span></a>
 							<ul class="dropdown-menu">
@@ -414,7 +414,7 @@
 			};
 			var graph = dc.barChart(".registeryear")   
 				.margins({top: 0, right: 3, bottom: 20, left: 3})
-				.height(300)
+				.height(450)
 				//.width(165)
 				.gap(3)
 				//.x(d3.scale.ordinal())
@@ -577,7 +577,7 @@
 				"bPaginate": true,
 				"bLengthChange": false,
 				"bFilter": false,
-				"order": [[ 1, "asc" ],[2,"asc"]],
+				"order": [[ 0, "asc" ],[1,"asc"]],
 				"bSort": true,
 				"bInfo": false,
 				"bAutoWidth": false,

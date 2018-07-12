@@ -409,6 +409,10 @@ ul.nav.navbar-right li.active a{
 		background: #004c79;
 		color: #FFF;
 	}
+
+	.lobbyists-tab .nav li#cm_tool_btn.active a {
+		background: #73264d;
+	}
 	
 	.nav li#bl_tool_btn.active a{
 		background: #8d1556;
@@ -1527,4 +1531,14 @@ div#ti_logo_container {
 }
 .chart_box h3 {
 	text-transform: none;
+}
+
+.lobbyists-tab {
+	//73264d
+}
+.lobbyists-tab #filter_wrap.filter_cm {
+    background: #73264d;
+}
+.lobbyists-tab .dc-data-count .filter-count, .dc-data-count .total-count {
+	color: #fff;
 }

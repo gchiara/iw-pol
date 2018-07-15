@@ -17,13 +17,16 @@
 	<script src="./js/jquery.min.js"></script>
 	<script src="./js/jquery.dataTables.min.js"></script>
 	<script src="./js/underscore-min.js"></script>
-	<script src="./js/crossfilter.min.js"></script>
+	<script src="./js/crossfilter2.min.js"></script>
 	<script src="./js/d3.js"></script>
 	<script src="./js/dc.js"></script>
 	<script src="./js/bootstrap.min.js"></script>
 </head>
 
 <body>
+	<div id="loader-container">
+		<div id="loader"></div>
+	</div>
 	<nav class="navbar navbar-default" role="navigation">
 		<div class="container">
 				<div class="navbar-header">
@@ -34,8 +37,9 @@
 						<span class="icon-bar"></span>
 					</button>
 					<div class="navbar-brand" id="ti_logo_container">
-							<a id="ti_logo" href="#">Transparency International</a>
-							<a id="page_title" href="/" target="_blank">Integrity<br />Watch <strong>Polska</strong></a>
+							<!-- <a id="ti_logo" href="#">Jawny Lobbing</a> -->
+							<!-- <a id="page_title" href="/">Integrity<br />Watch <strong>Polska</strong></a> -->
+							<div class="project-title" href="/"><strong>Jawny<br />Lobbing</strong></div>
 					</div>
 				</div>
 			
@@ -53,12 +57,16 @@
 						</li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#">O Integrity Watch</a></li>
+						<li><a href="about.html">O Integrity Watch</a></li>
 						<!-- <li><a href="contact.html">Contacts</a></li> -->
 					</ul>
 				</div>
 		</div><!-- container -->
 	</nav>
+	<div class="about-container">
+		Na tej stronie znajdziesz informacje, dotyczące zewnętrznych uczestników komisji sejmowych obecnej kadencji (od 2015 r.). W posiedzeniach komisji biorą udział przedstawiciele wszystkich sektorów i branż, od publicznego po pozarządowy. Sprawdź, jak licznie i w których posiedzeniach uczestniczą.
+		Źródłem danych jest strona internetowa Sejmu.		
+	</div>
 	<div class="container_wrap cm_header" id="about_wrap_top">&nbsp;</div>
 
 	<div class="container_wrap filter_cm" id="filter_wrap">
@@ -103,6 +111,7 @@
 				<div class="row">
 					<div class="col-md-4" style="margin-top:17px;">
 						<!-- TOP 10 ACTIVOS -->
+						<!--
 						<div class="chart_box" id="group_container">
 							<h3>Kadencje sejmu</h3>
 							<div class="info_chart">
@@ -120,6 +129,7 @@
 							
 							<br class="clear" />
 						</div>
+						-->
 						<!-- TOP 10 ACTIVOS -->
 						<div class="chart_box" id="group_container">
 							<h3>Komisje sejmowe</h3>
@@ -199,7 +209,12 @@
 <script>
 	'use strict';
 
-	var events=[];
+	var events = [];
+	var people = [];
+	var entities = [];
+	var categories = [];
+	var committees = [];
+
 	var meetingspages;
 	var evt=null;
 	var nameEvent=null;
@@ -320,7 +335,8 @@
 			.group(all);
 
 		nameEvent = ndx.dimension(function(d) {
-			return d.person.toLowerCase()+" "+d.subject.toLowerCase()+" "+d.affiliation.toLowerCase()+" "+d.entity.toLowerCase()+ " "+d.topic.toLowerCase()+ " " + "termoffice:"+d.term_office1+" ";
+			//return d.person.toLowerCase()+" "+d.subject.toLowerCase()+" "+d.affiliation.toLowerCase()+" "+d.entity.toLowerCase()+ " "+d.topic.toLowerCase()+ " " + "termoffice:"+d.term_office1+" ";
+			return d.entitiesNames.toString()+" "+d.categoriesNames.toString();
 		});
 
 		function rotateBarChartLabels(chart) {
@@ -331,12 +347,17 @@
 
 		//Host Type Chart
 		function drawHostType () {
+			/*
 			var dim = ndx.dimension (function(d) {
 				if(d.type && d.type != ""){
 					return d.type;   
 				}
 			});
 			var group   = dim.group().reduceSum(function(d) {   return 1; });
+			*/
+
+			var dim = ndx.dimension(function(d){ return d.categoriesNames; }, true);
+            var group = dim.group();
 			var hosttypecolor = {			
 				"Other":"#bbbbbb"
 			};
@@ -351,40 +372,14 @@
 				.externalLabels(-40);				
 				//.colorCalculator(function(d, i) { return hosttypecolor[d.key]; });
 				chart.legend(dc.legend().x(30).y(300).itemHeight(13).gap(5));
-				
-			function rangeorder(d){
-				switch(d.key) {
-					case 'Ministro':
-						return 0;
-						break;
-					case 'Subsecretario':
-						return 1;
-						break;
-					case 'Intendente':
-						return 2;
-						break;
-					case 'Gobernador':
-						return 3;
-						break;
-					default:
-						return 4;
-				}
-			}
+			
 			//chart.ordering(function(d) { return rangeorder(d); });
 		}
 		
 		//Top entities
 		function drawEntities() {
-			var dim = ndx.dimension (function(d) {
-					if(d.entity && d.entity != ""){
-						return d.entity;  
-					}					
-			});
-			var group   = dim.group().reduceSum(function(d) {   
-				if(d.entity && d.entity != ""){
-					return 1;
-				}
-			});
+			var dim = ndx.dimension(function(d){ return d.entitiesNames; }, true);
+            var group = dim.group();
 
 			var filteredGroup = (function(source_group) {
 				return {
@@ -410,15 +405,19 @@
 				.group(filteredGroup);
 				
 			graph.xAxis().ticks(5).tickFormat(d3.format("d"));
-			
 			//chart.ordering(function(d) { return rangeorder(d); });
 		}
 
 		//Top 10 guests chart
 		function drawTopCommittee () {
 			var dim = ndx.dimension (function(d) {
-				return d.committee;
+				if(d.committeeInfo.name){
+					return d.committeeInfo.name;
+				} else {
+					return "N/A"
+				}
 			});	
+			
 			var group = dim.group().reduceSum(function(d) { return 1; });
 			var filteredGroup = (function(source_group) {
 				return {
@@ -431,7 +430,7 @@
 			})(group);
 			var graph = dc.rowChart(".topcommittee")   
 				.margins({top: 0, right: 3, bottom: 20, left: 3})
-				.height(160)
+				.height(450)
 				//.width(165)
 				.gap(3)
 				.x(d3.scale.ordinal())
@@ -461,10 +460,10 @@
 				  "data": function (d, type, val, meta) {
 					 if (!d) return "";
 					 //return d.meeting_id; 
-					 if(d.committee_full != ""){
-						return d.committee_full;
+					 if(d.committeeInfo.name){
+						return d.committeeInfo.name;
 					 }
-					 return d.committee; 
+					 return d.committeeId; 
 					},
 				  },{
 				  "searchable": false,
@@ -473,7 +472,9 @@
 				  "defaultContent":"N/A",
 				  "data": function (d, type, val, meta) {
 					 if (!d) return "";
-					 return d.term_office1; 
+					 if(d.committeeInfo.term){
+						return d.committeeInfo.term;
+					 }
 					},
 				  },{
 				  "defaultContent":"N/A",
@@ -483,7 +484,7 @@
 				  "data": function (d, type, val, meta) {
 					 if (!d) return "";
 					 //return d.person; 
-					 return d.meeting_id;
+					 return d.code;
 					}
 				  },{
 				  "defaultContent":"N/A",
@@ -503,7 +504,7 @@
 				  "targets": 4,
 				  "data": function (d, type, val, meta) {
 					 if (!d) return "";
-					 return d.entity; 
+					 return d.entitiesNames.toString(); 
 					}
 				  }
 				],
@@ -536,14 +537,18 @@
 				s += "<div class='l_name' style='text-align:center;margin-bottom:30px;'><label><strong>SPRAWA</strong></label><br />"+d.subject+"</div>";
 				s += "<div class='data_container_title' style='text-align:center;'></div>";
 				
-				s += "<div class='l_name'><label>Kadencja:</label> "+d.term_office1+"</div>";
-				s += "<div class='l_name'><label>Komisja:</label> "+d.committee+"</div>";
-				s += "<div class='l_name'><label>Posiedzenie:</label> "+d.meeting_id+"</div>";
+				s += "<div class='l_name'><label>Kadencja:</label> "+d.committeeInfo.term+"</div>";
+				s += "<div class='l_name'><label>Komisja:</label> "+d.committeeInfo.name+"</div>";
+				s += "<div class='l_name'><label>Posiedzenie:</label> "+d.code+"</div>";
 				s += "<div class='hr'></div>";
-				s += "<div class='l_name'><label>Zewnętrzni uczestnicy:</label> "+d.person+"</div>";
-				s += "<div class='l_name'><label>Funkcja/ stanowisko:</label> "+d.affiliation+"</div>";
-				s += "<div class='l_name'><label>Nazwa podmiotu:</label> "+d.entity+"</div>";
-				s += "<div class='l_name'><label>Kategoria:</label> "+d.type+"</div>";
+				s += "<div class='l_name'><label>Zewnętrzni uczestnicy:</label>";
+				_.each(d.participants,function (e){
+					s += e.name+", ";
+				});
+				s += "</div>";
+				/* s += "<div class='l_name'><label>Funkcja/ stanowisko:</label> "+d.affiliation+"</div>"; */
+				s += "<div class='l_name'><label>Nazwa podmiotu:</label> "+d.entitiesNames.join(', ')+"</div>";
+				s += "<div class='l_name'><label>Kategoria:</label> "+d.categoriesNames.join(', ')+"</div>";
 				
 				
 				s += "</div>";
@@ -657,10 +662,16 @@
 	$(function() {
 		
 		//Load datasets
-		d3.csv("data/poland2.csv", function (rows) {
-			events = rows;
+		d3.json("data/normalized.json", function (dataset) {
+			events = dataset.data.events;
+			people = dataset.data.people;
+			entities = dataset.data.entities;
+			categories = dataset.data.categories;
+			committees = dataset.data.committees;
+
 			//renderLoaded();
-			var dateFormat = d3.time.format("%d/%m/%Y");
+			//var dateFormat = d3.time.format("%d/%m/%Y");
+			var dateFormat = d3.time.format("%Y-%m-%d");
 			var now = Date.now();
 			var a;
 			
@@ -671,39 +682,46 @@
 				
 				d.type = "";
 
-				if(d.NGO == 1){
-					d.type = "NGO";
-				} else if(d.c_industry == 1){
-					d.type = "Organizacje branżowe/ izby";
-				} else if(d.c_employers == 1){
-					d.type = "Organizacja pracodawców";
-				} else if(d.c_trade == 1){
-					d.type = "Związek zawodowy";
-				} else if(d.c_company == 1){
-					d.type = "Firmy";
-				} else if(d.c_research == 1){
-					d.type = "Przedstawiciele z uczelni i instytutów naukowych";
-				} else if(d.c_gov == 1){
-					d.type = "Ministerstwo, rząd, prezydent";
-				} else if(d.c_parliament == 1){
-					d.type = "Sejm";
-				} else if(d.c_public == 1){
-					d.type = "Instytucja publiczna (np.. NIK)";
-				} else if(d.c_autonomy == 1){
-					d.type = "Samorząd";
-				} else if(d.c_lobbyst == 1){
-					d.type = "Lobbysta";
-				} else if(d.c_state == 1){
-					d.type = "Spółki skarbu państwa, przedsiębiorstwa państwowe";
-				} else if(d.c_parks == 1){
-					d.type = "Parki";
-				} else if(d.c_foreign == 1){
-					d.type = "Przedstawiciele obcych państw";
-				} else if(d.c_other == 1){
-					d.type = "Inne";
+				d.entities = [];
+				d.entitiesNames = [];
+				d.categories = [];
+				d.categoriesNames = [];
+
+				//Find committee name
+				//committees
+				//"id":1,"code":"ASW","name":"Administracji i Spraw Wewnętrznych","term":"8"
+				d.committeeInfo;
+				var thiscommittee = _.find(committees,function (m) { return m.id == d.committeeId });
+				if(thiscommittee){
+					//d.committeeName = thiscommittee.name;
+					//d.committeeCode = thiscommittee.code;
+					d.committeeInfo = thiscommittee;
 				}
 
-				
+				//Loop through participants, for each find person in people list and find related entities
+				_.each (d.participants, function (p) {
+					var thisperson = _.find(people,function (m) { return m.personId == p.personId });
+					p.name = thisperson.name;
+					d.entities = d.entities.concat(thisperson.entityIds);
+				});
+				d.entities = _.uniq(d.entities);
+				//Loop through unique entities to find names and categories
+				_.each (d.entities, function (p) {
+					var thisentity = _.find(entities,function (m) { return m.id == p });
+					if(thisentity){
+						d.entitiesNames.push(thisentity.name);
+						d.categories.push(thisentity.categoryIds);
+					}
+				});
+				_.each (d.categories, function (p) {
+					var thiscat = _.find(categories,function (m) { return m.id == p });
+					if(thiscat){
+						d.categoriesNames.push(thiscat.name);
+					}
+				});
+				//console.log(d.entitiesNames);
+				//console.log(d.categoriesNames);
+
 				d.committee_full = "";
 				if(d.committee == "OSZ"){
 					d.committee_full = "Ochrony Środowiska, Zasobów Naturalnych i Leśnictwa";
@@ -718,6 +736,7 @@
 				thisid ++;
 			});
 			//End loop through dataset
+			$('#loader-container').hide();
 			//Call grid function to create and display charts
 			grid ("#ec",events);
 		}); 

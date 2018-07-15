@@ -12,8 +12,6 @@
 	<title>Profesjonalni lobbyści</title>
 	<link rel="shortcut icon" href="favicon.ico">
 	<link href="css/bower.min.css" rel="stylesheet">
-	
-
     <link rel="stylesheet" type="text/css" href="./css/dc.css" />
 	<link rel="stylesheet" type="text/css" href="./css/style.css"/>
 	<script src="./js/jquery.min.js"></script>
@@ -22,11 +20,13 @@
     <script src="./js/crossfilter2.min.js"></script>
 	<script src="./js/d3.js"></script>
 	<script src="./js/dc.js"></script>
-    <script src="./js/bootstrap.min.js"></script>
-    
+    <script src="./js/bootstrap.min.js"></script>  
 </head>
 
 <body class="lobbyists-tab">
+	<div id="loader-container">
+		<div id="loader"></div>
+	</div>
 	<nav class="navbar navbar-default" role="navigation">
 		<div class="container">
 				<div class="navbar-header">
@@ -37,8 +37,7 @@
 						<span class="icon-bar"></span>
 					</button>
 					<div class="navbar-brand" id="ti_logo_container">
-							<a id="ti_logo" href="#">Transparency International</a>
-							<a id="page_title" href="/" target="_blank">Integrity<br />Watch <strong>Polska</strong></a>
+						<div class="project-title" href="/"><strong>Jawny<br />Lobbing</strong></div>
 					</div>
 				</div>
 			
@@ -56,12 +55,16 @@
 						</li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#">O Integrity Watch</a></li>
+						<li><a href="about.html">O Integrity Watch</a></li>
 						<!-- <li><a href="contact.html">Contacts</a></li> -->
 					</ul>
 				</div>
 		</div><!-- container -->
 	</nav>
+	<div class="about-container about-container-lobbyists">
+		Na tej stronie znajdziesz najważniejsze informacje, dotyczące działalności lobbystów zawodowych w Polsce, czyli osób i firm, które wykonując usługi lobbingowe na zlecenie innych instytucji i przedsiębiorstw. Sprawdź, kim są lobbyści zawodowi i co ich interesuje, używając interaktywnych wykresów poniżej.<br /> 
+		Źródłem danych są Ministerstwo Spraw Wewnętrznych, Sejm i Rejestr Przejrzystości UE. 
+	</div>
 	<div class="container_wrap cm_header" id="about_wrap_top">&nbsp;</div>
 
 	<div class="container_wrap filter_cm" id="filter_wrap">
@@ -823,6 +826,7 @@
 			//End loop through dataset
 			//Call grid function to create and display charts
 			//grid("#ec",events);
+			$('#loader-container').hide();
 			grid('#ec',events_singleEntry);
 		}); 
 

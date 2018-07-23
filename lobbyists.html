@@ -121,21 +121,7 @@
 						</div>
 					</div>
 					<div class="col-md-4">
-						<!-- TOP 10 PASIVOS -->
-						<div class="chart_box">
-							<h3>Rodzaj organizacji lobby?</h3>
-							<div class="info_chart">
-								<span class="info">info</span>
-								<p class="desc"></p>
-							</div>
-							<!-- <div class="types piechart"></div> -->
-							<div class="wordcloud"></div>
-							<div class="label"></div>
-							<br class="clear" />
-						</div>
-					</div>
-					<div class="col-md-4">
-						<!-- CATEGORIA -->
+						<!-- REGISTRATION DATE -->
 						<div class="chart_box" id="categoria">
 							<h3>Liczba rejestracji<!--span class="info">info</span--></h3>
 							<div class="info_chart">
@@ -143,6 +129,48 @@
 								<p class="desc"></p>
 							</div>
 							<div class="registeryear"></div>
+							<div class="legend">
+							</div>
+							<br class="clear" />
+						</div>
+					</div>
+					<div class="col-md-4">
+						<!-- EU REGISTER AND PARLIAMENT ACTIVITY BARCHART -->
+						<div class="chart_box">
+							<h3>Rejestr Unii Europejskiej, Działalność w Sejmie i Senacie</h3>
+							<div class="info_chart">
+								<span class="info">info</span>
+								<p class="desc"></p>
+							</div>
+							<!-- <div class="types piechart"></div> -->
+							<div class="euRegisterParliament"></div>
+							<div class="label"></div>
+							<br class="clear" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<!-- WORDCLOUD -->
+						<div class="chart_box" id="categoria">
+							<h3>Wordcloud<!--span class="info">info</span--></h3>
+							<div class="info_chart">
+								<span class="info">info</span>
+								<p class="desc"></p>
+							</div>
+							<div class="wordcloud"></div>
+							<div class="legend">
+							</div>
+							<br class="clear" />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<!-- MINISTRIES REGISTRATIONS ROWCHART -->
+						<div class="chart_box" id="categoria">
+							<h3>Number of registrations per Ministries<!--span class="info">info</span--></h3>
+							<div class="info_chart">
+								<span class="info">info</span>
+								<p class="desc"></p>
+							</div>
+							<div class="ministriesRegistrations"></div>
 							<div class="legend">
 							</div>
 							<br class="clear" />
@@ -321,26 +349,14 @@
 
 		//Type Chart
 		function drawHostType () {
-            /*
-			var dim = ndx.dimension (function(d) {
-                console.log(d.type);
-				if(d.type){
-					return d.type;   
-				}
-			}, true);
-            */
             var dim = ndx.dimension(function(d){ return d.type; }, true);
-			//var group   = dim.group().reduceSum(function(d) {   return 1; });
             var group = dim.group();
 			var hosttypecolor = {			
 				"Other":"#bbbbbb"
 			};
-
-            
 			var graph = dc.rowChart(".types")   
 				.margins({top: 0, right: 3, bottom: 20, left: 3})
 				.height(450)
-				//.width(165)
 				.gap(3)
 				.x(d3.scale.ordinal())
 				.elasticX(true)
@@ -399,7 +415,6 @@
         }
 
 		//Register year barchart
-		
         function drawRegisterYear() {
 
             var min = 2006;
@@ -407,32 +422,58 @@
 			
 			var dim = ndx.dimension(function(d){
 				return d.registerYear;
-			}, true);
+				//console.log(d.registerYear);
+			});
 			var group   = dim.group().reduceSum(function(d) { return 1; });
-			
-			
-			
+
 			var hosttypecolor = {			
 				"Other":"#bbbbbb"
 			};
 			var graph = dc.barChart(".registeryear")   
 				.margins({top: 0, right: 3, bottom: 20, left: 3})
 				.height(450)
-				//.width(165)
 				.gap(3)
-				//.x(d3.scale.ordinal())
                 .x(d3.scale.linear().domain([min-1,max+1]))
 				//.elasticX(true)
 				.colorCalculator(function(d, i) {
 					return "#ecb005";
 				})
-				//.brushOn(false)
 				.ordering(function(d){return -d.value})
 				.dimension(dim)
 				.group(group);
 
-			graph.xAxis().ticks(5).tickFormat(d3.format("d"));	
-			
+			graph.xAxis().ticks(5).tickFormat(d3.format("d"));		
+		}
+
+		//euRegisterParliament
+		function drawEuRegisterParliament() {
+
+			var dim = ndx.dimension(function(d){
+				console.log(d.registerAndParliament);
+				return d.registerAndParliament;
+				
+			}, true);
+			var group   = dim.group().reduceSum(function(d) { return 1; });
+
+			var hosttypecolor = {			
+				"Other":"#bbbbbb"
+			};
+			var graph = dc.barChart(".euRegisterParliament")   
+				.margins({top: 0, right: 3, bottom: 20, left: 30})
+				.height(450)
+				.x(d3.scale.ordinal().domain(["","Rejestr Unii Europejskiej", "Działalność w Sejmie i Senacie"]))
+				.xUnits(dc.units.ordinal)
+				.gap(30)
+				.brushOn(false)
+				.xAxisLabel('')
+				.yAxisLabel('')
+				.dimension(dim)
+				.elasticX(true)
+				.elasticY(true)
+				.colorCalculator(function(d, i) {
+					return "#ecb005";
+				})
+				.group(group);
 		}
 		
 
@@ -499,7 +540,7 @@
 			 var group   = dim.group().reduceSum(function(d) { return 1; });
 			 var graph =  dc.wordCloud(".wordcloud")
 			  .rotate(function() { return ~~(Math.random() * 2) * 90; })
-			  .size([300,450])
+			  .size([550,450])
 			  .dimension(dim)
 			  .maxWords(50)
 			  .padding(5)
@@ -509,7 +550,29 @@
 			  .textAccessor(function(d) {return d.subject;})
 			  .onClick(function(d){setword(d.key);})
 			  .stopWords (/^()$/);
+		}
 
+		//Ministries
+		function drawMinistries() {
+			var dim = ndx.dimension(function(d){ return d.ministriesArray; }, true);
+            var group = dim.group();
+			var hosttypecolor = {			
+				"Other":"#bbbbbb"
+			};
+			var graph = dc.rowChart(".ministriesRegistrations")   
+				.margins({top: 0, right: 3, bottom: 20, left: 3})
+				.height(450)
+				.gap(3)
+				.x(d3.scale.ordinal())
+				.elasticX(true)
+				.colorCalculator(function(d, i) {
+					return "#ecb005";
+				})
+				.ordering(function(d){return -d.value})
+				.dimension(dim)
+				.group(group);
+
+			graph.xAxis().ticks(5).tickFormat(d3.format("d"));	
 		}
 
 		//Datatables table
@@ -721,7 +784,9 @@
 		//Draw graphs
 		drawTable();
 		drawHostType();
-        drawRegisterYear();
+		drawRegisterYear();
+		drawEuRegisterParliament();
+		drawMinistries();
     	//drawPie();
 		drawCloud();
 
@@ -732,8 +797,7 @@
 	$(function() {
 		
 		//Load datasets
-		d3.csv("./data/tab2new.csv", function (rows) {
-		//d3.csv("http://www.chiaragirardelli.net/other/tab2new.csv", function (rows) {
+		d3.csv("./data/tab2.csv", function (rows) {
 			
 			events = rows;
 			//renderLoaded();
@@ -776,8 +840,8 @@
 
                 //Get year of registration date (Data uzyskania przepustki)
                 d.registerYear = '';
-                if(d.registerDate && d.registerDate.split('-').length > 1){
-                    d.registerYear = d.registerDate.split('-')[2];
+                if(d.registerDateMinistry && d.registerDateMinistry.split('-').length > 1){
+                    d.registerYear = d.registerDateMinistry.split('-')[0];
                 }
 				
                 d.type = [];
@@ -791,37 +855,56 @@
 				d.num = thisid;
 				thisid ++;
 
+				//Ministries array
+				d.ministriesArray = d.ministries.split(", ");
+
+				//Euregister
+				//parliamentActivity
+				d.registerAndParliament = [];
+				if(d.Euregister == "Tak"){
+					d.registerAndParliament.push("Rejestr Unii Europejskiej");
+				}
+				if(d.parliamentActivity == "Tak"){
+					d.registerAndParliament.push("Działalność w Sejmie i Senacie");
+				}
+
+
 				//Check if entity entry already exists
 				var entityEntry = _.find(events_singleEntry,function (m) { return m.entityName == d.entityName  });
 				if(entityEntry){
+					/*
 					if(d.registerYear !== ''){
 						if(entityEntry.registerYear.indexOf(d.registerYear) == -1){
 							entityEntry.registerYear.push(d.registerYear);
 						}
 					}
+					*/
 					entityEntry.subject.push(d.subject);
 					entityEntry.type.concat(d.type);
 				} else {
 					//id	entityName	Euregister	category	ministries	parliamentActivity	representatives	clients	registerDate	expirationDate	subject
 					var newEntity = {
 						'id':d.id,
-						'entityName':d.entityName,
-						'Euregister':d.Euregister,
-						'category':d.category,
+						'entityName': d.entityName,
+						'Euregister': d.Euregister,
+						'category': d.category,
 						'ministries': d.ministries,
 						'parliamentActivity': d.parliamentActivity,
-						'registerYear': [d.registerYear],
+						'registerYear': d.registerYear,
 						'subject': [d.subject],
 						'type': d.type,
-						'num': thisid2
+						'num': thisid2,
+						'registerAndParliament': d.registerAndParliament,
+						'ministriesArray': d.ministriesArray
 					};
+					/*
 					if(d.registerYear == ''){
 						newEntity.registerYear = [];
 					}
+					*/
 					thisid2 ++;
 					events_singleEntry.push(newEntity);
 				}
-
 			});
 			//End loop through dataset
 			//Call grid function to create and display charts

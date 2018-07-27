@@ -200,6 +200,7 @@
 						<thead>
 							<tr class="header">
 								<th class="header">Numer re-jestrze</th>
+								<th class="header">Data rejestracji</th>
 								<th class="header">Nazwa lobbysty zawodowego</th>
 								<th class="header">Rejestr UE (T/N)</th>
 								<th class="header">Przedmiot lobbingu w EU rejestr</th> 
@@ -449,7 +450,6 @@
 		function drawEuRegisterParliament() {
 
 			var dim = ndx.dimension(function(d){
-				console.log(d.registerAndParliament);
 				return d.registerAndParliament;
 				
 			}, true);
@@ -586,7 +586,6 @@
 		//Datatables table
 		function drawTable () {
 			var count=0;
-
 			datatable = $(".table").dataTable({
 				"columnDefs": [ 
 				  {
@@ -605,13 +604,22 @@
 				  "defaultContent":"N/A",
 				  "data": function (d, type, val, meta) {
 					 if (!d) return "";
+					 return d.registerDateMinistry; 
+					},
+				  },{
+				  "searchable": false,
+				  "orderable": true,
+				  "targets": 2,
+				  "defaultContent":"N/A",
+				  "data": function (d, type, val, meta) {
+					 if (!d) return "";
 					 return d.entityName; 
 					},
 				  },{
 				  "defaultContent":"N/A",
 				  "searchable": false,
 				  "orderable": true,
-				  "targets": 2,
+				  "targets": 3,
 				  "data": function (d, type, val, meta) {
 					 if (!d) return "";
 					 return d.Euregister;
@@ -620,7 +628,7 @@
 				  "defaultContent":"N/A",
 				  "searchable": false,
 				  "orderable": true,
-				  "targets": 3,
+				  "targets": 4,
 				  "data": function(d) {
 					 if (!d) return "";
 					 return d.category;
@@ -630,7 +638,7 @@
 				  "defaultContent":"N/A",
 				  "searchable": false,
 				  "orderable": true,
-				  "targets": 4,
+				  "targets": 5,
 				  "data": function (d, type, val, meta) {
 					 if (!d) return "";
 					 return d.ministries; 
@@ -640,7 +648,7 @@
 				  "defaultContent":"N/A",
 				  "searchable": false,
 				  "orderable": true,
-				  "targets": 5,
+				  "targets": 6,
 				  "data": function (d, type, val, meta) {
 					 if (!d) return "";
 					 return d.parliamentActivity; 
@@ -651,7 +659,7 @@
 				"bPaginate": true,
 				"bLengthChange": false,
 				"bFilter": false,
-				"order": [[ 0, "asc" ],[1,"asc"]],
+				"order": [[ 0, "asc" ],[2,"asc"]],
 				"bSort": true,
 				"bInfo": false,
 				"bAutoWidth": false,
@@ -902,6 +910,7 @@
 						'ministries': d.ministries,
 						'parliamentActivity': d.parliamentActivity,
 						'registerYear': d.registerYear,
+						'registerDateMinistry': d.registerDateMinistry,
 						'subject': [d.subject],
 						'type': d.type,
 						'num': thisid2,

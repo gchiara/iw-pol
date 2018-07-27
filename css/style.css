@@ -322,7 +322,7 @@ ul.nav.navbar-right li.active a{
 	div#ti_logo_container {
 		height: 70px;
 		padding: 5px;
-		width: 220px !important;
+		width: 270px !important;
 	}
 	.navbar-collapse ul.navbar-right li a {
 		line-height: auto !important;
@@ -1520,7 +1520,7 @@ a#page_title {
 	width: 40%;
 }
 div#ti_logo_container {
-	width: 230px;
+	width: 280px;
 }
 .dropdown-menu li{
 	margin: 1em 0;
@@ -1563,13 +1563,19 @@ div#ti_logo_container {
 }
 
 .project-title {
-	font-size: 18px;
+	font-size: 16px;
 	color: #fff;
 	font-weight: bold;
 	text-transform: uppercase;
 	line-height: 100%;
 	padding-top: 12px;
-	display: block;
+	padding: 10px;
+	display: inline-block;
+	margin-top: 6px;
+}
+.project-title1 {
+	border-right: 2px solid #fff;
+	padding-right: 15px;
 }
 
 /* LOADER */

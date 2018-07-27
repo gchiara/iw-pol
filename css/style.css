@@ -298,7 +298,7 @@ ul.nav.navbar-right li.active a{
 }
 
 .menu-link1 {
-	padding-top: 20px !important;
+	padding-top: 10px !important;
 }
 .menu-link2 {
 	padding-top: 30px !important;
@@ -411,7 +411,7 @@ ul.nav.navbar-right li.active a{
 	}
 
 	.lobbyists-tab .nav li#cm_tool_btn.active a {
-		background: #73264d;
+		background: #039AAB;
 	}
 	
 	.nav li#bl_tool_btn.active a{
@@ -1537,7 +1537,7 @@ div#ti_logo_container {
 	//73264d
 }
 .lobbyists-tab #filter_wrap.filter_cm {
-    background: #73264d;
+    background: #039AAB;
 }
 .lobbyists-tab .dc-data-count .filter-count, .dc-data-count .total-count {
 	color: #fff;
@@ -1552,7 +1552,8 @@ div#ti_logo_container {
 	margin-bottom: 30px;
 }
 .about-container-lobbyists {
-	background: #73264d;
+	//background: #73264d;
+	background: #039AAB;
 }
 
 /* IW Polska About logos */

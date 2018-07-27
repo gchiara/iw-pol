@@ -43,8 +43,8 @@
 			
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-                        <li id="cm_tool_btn"><a href="index.html" class="menu-link1"><strong>Posiedzenia komisji sejmowych</strong></a></li>
-						<li class="active" id="cm_tool_btn"><a href="lobbyists.html" class="menu-link1"><strong>Profesjonalni lobbyści</strong></a></li>
+                        <li id="cm_tool_btn"><a href="index.html" class="menu-link1"><strong>Lobbing w komisjach sejmowych</strong></a></li>
+						<li class="active" id="cm_tool_btn"><a href="lobbyists.html" class="menu-link1"><strong>Działalność lobbystów zawodowych</strong></a></li>
 						<li class="dropdown">
 							<a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle menu-link2" href="#" style="width: 120px;">Inne wersje<span class="caret"></span></a>
 							<ul class="dropdown-menu">
@@ -62,8 +62,8 @@
 		</div><!-- container -->
 	</nav>
 	<div class="about-container about-container-lobbyists">
-		Na tej stronie znajdziesz najważniejsze informacje, dotyczące działalności lobbystów zawodowych w Polsce, czyli osób i firm, które wykonując usługi lobbingowe na zlecenie innych instytucji i przedsiębiorstw. Sprawdź, kim są lobbyści zawodowi i co ich interesuje, używając interaktywnych wykresów poniżej.<br /> 
-		Źródłem danych są Ministerstwo Spraw Wewnętrznych, Sejm i Rejestr Przejrzystości UE. 
+		Na tej stronie znajdziesz najważniejsze informacje, dotyczące działalności lobbystów zawodowych w Polsce, czyli osób i firm, które zawodowo wykonują usługi lobbingowe na zle-cenie innych instytucji i przedsiębiorstw. Sprawdź, kim są lobbyści zawodowi i co ich interesuje, używając interaktywnych wykresów poniżej.<br />
+		Źródłem danych są Ministerstwo Spraw Wewnętrznych, Sejm i Rejestr Przejrzystości UE.
 	</div>
 	<div class="container_wrap cm_header" id="about_wrap_top">&nbsp;</div>
 
@@ -108,14 +108,15 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-4">
-						<!-- TOP 10 ACTIVOS -->
-						<div class="chart_box" id="group_container">
-							<h3>Liczba profesjonalnych lobbystów</h3>
+						<!-- EU REGISTER AND PARLIAMENT ACTIVITY BARCHART -->
+						<div class="chart_box">
+							<h3>Lobbyści zawodowi w rządzie, parlamencie i Unii Europejskiej</h3>
 							<div class="info_chart">
 								<span class="info">info</span>
-								<p class="desc"></p>
+								<p class="desc">Sprawdź, ilu lobbystów zawodowych jest aktywnych na terenie ministerstw, Sejmu i Senatu oraz w instytucjach Unii Europejskiej.</p>
 							</div>
-							<div class="types chart-full"></div>
+							<!-- <div class="types piechart"></div> -->
+							<div class="euRegisterParliament"></div>
 							<div class="label"></div>
 							<br class="clear" />
 						</div>
@@ -123,10 +124,10 @@
 					<div class="col-md-4">
 						<!-- REGISTRATION DATE -->
 						<div class="chart_box" id="categoria">
-							<h3>Liczba rejestracji<!--span class="info">info</span--></h3>
+							<h3>Rejestr lobbystów zawodowych MSWiA<!--span class="info">info</span--></h3>
 							<div class="info_chart">
 								<span class="info">info</span>
-								<p class="desc"></p>
+								<p class="desc">Sprawdź, ilu lobbystów zawodowych zarejestrowało się w MSWiA od 2006 r.</p>
 							</div>
 							<div class="registeryear"></div>
 							<div class="legend">
@@ -135,15 +136,14 @@
 						</div>
 					</div>
 					<div class="col-md-4">
-						<!-- EU REGISTER AND PARLIAMENT ACTIVITY BARCHART -->
-						<div class="chart_box">
-							<h3>Rejestr Unii Europejskiej, Działalność w Sejmie i Senacie</h3>
+						<!-- Types -->
+						<div class="chart_box" id="group_container">
+							<h3>Obszary aktywności lobbystów zawodowych</h3>
 							<div class="info_chart">
 								<span class="info">info</span>
-								<p class="desc"></p>
+								<p class="desc">Sprawdź, w jakich obszarach prac rządu i parlamentu lobbyści zawodowi są najbardziej aktywni.</p>
 							</div>
-							<!-- <div class="types piechart"></div> -->
-							<div class="euRegisterParliament"></div>
+							<div class="types chart-full"></div>
 							<div class="label"></div>
 							<br class="clear" />
 						</div>
@@ -151,10 +151,10 @@
 					<div class="col-md-6">
 						<!-- WORDCLOUD -->
 						<div class="chart_box" id="categoria">
-							<h3>Wordcloud<!--span class="info">info</span--></h3>
+							<h3>Tematy zainteresowań lobbystów<!--span class="info">info</span--></h3>
 							<div class="info_chart">
 								<span class="info">info</span>
-								<p class="desc"></p>
+								<p class="desc">Kliknij w wybrane słowo i sprawdź, który lobbysta użył go w opisie przedmiotu swoich zainteres-owań.</p>
 							</div>
 							<div class="wordcloud"></div>
 							<div class="legend">
@@ -165,10 +165,10 @@
 					<div class="col-md-6">
 						<!-- MINISTRIES REGISTRATIONS ROWCHART -->
 						<div class="chart_box" id="categoria">
-							<h3>Number of registrations per Ministries<!--span class="info">info</span--></h3>
+							<h3>Działalność w ministerstwach<!--span class="info">info</span--></h3>
 							<div class="info_chart">
 								<span class="info">info</span>
-								<p class="desc"></p>
+								<p class="desc">Sprawdź, z jakimi ministerstwami współpracowali lobbyści zawodowi.</p>
 							</div>
 							<div class="ministriesRegistrations"></div>
 							<div class="legend">
@@ -186,10 +186,10 @@
 		<div class="container">
 			<div class="row">
 				<div class="content" id="list_content">
-					<h2 class="table_title" style="width: 100%;">POSIEDZENIE
+					<h2 class="table_title" style="width: 100%;">Lobbyści zawodowi
 						<div class="info_chart">
 							<span class="info">info</span>
-							<p class="desc"></p>
+							<p class="desc">Sprawdź więcej informacji na temat lobbystów zawodowych i działalności w Sejmie, rządzie i Unii Europejskiej.</p>
 						</div>
 					</h2>
 					<!-- <div id="last_update">Last updated: <span id="updatedate"></span></div> -->
@@ -430,7 +430,7 @@
 				"Other":"#bbbbbb"
 			};
 			var graph = dc.barChart(".registeryear")   
-				.margins({top: 0, right: 3, bottom: 20, left: 3})
+				.margins({top: 0, right: 3, bottom: 20, left: 30})
 				.height(450)
 				.gap(3)
                 .x(d3.scale.linear().domain([min-1,max+1]))
@@ -461,7 +461,7 @@
 			var graph = dc.barChart(".euRegisterParliament")   
 				.margins({top: 0, right: 3, bottom: 20, left: 30})
 				.height(450)
-				.x(d3.scale.ordinal().domain(["","Rejestr Unii Europejskiej", "Działalność w Sejmie i Senacie"]))
+				.x(d3.scale.ordinal().domain(["","Rejestr Unii Europejskiej", "Sejmie i Senacie", "Rządzie", ""]))
 				.xUnits(dc.units.ordinal)
 				.gap(30)
 				.brushOn(false)
@@ -470,8 +470,16 @@
 				.dimension(dim)
 				.elasticX(true)
 				.elasticY(true)
+				.centerBar(false)
+				.barPadding(0.4)
 				.colorCalculator(function(d, i) {
-					return "#ecb005";
+					if(d.key == "Rządzie"){
+						return "#ecb005";
+					} else if(d.key == "Rejestr Unii Europejskiej"){
+						return "#003399";
+					} else if(d.key == "Sejmie i Senacie"){
+						return "#c31a1f";
+					}
 				})
 				.group(group);
 		}
@@ -670,7 +678,7 @@
 				s += "<div class='l_name' style='text-align:center;margin-bottom:30px;'><label><strong>"+d.entityName+"</strong></label></div>";
 				s += "<div class='data_container_title' style='text-align:center;'></div>";
 				
-				s += "<table><thead><tr><th>Przedstawiciele lob-bysty zawodowego w Sejmie i Senacie</th><th>Klienci</th><th>Data uz-yskania przepustki</th><th>Data wygaśnięcie przepustki</th><th>Przedmiot lobbingu</th></tr></thead><tbody>";
+				s += "<table><thead><tr><th>Przedstawiciele lob-bysty zawodowego w Sejmie i Senacie</th><th>Klienci</th><th>Data uz-yskania przepustki</th><th>Data wygaśnięcia przepustki</th><th>Przedmiot lobbingu</th></tr></thead><tbody>";
                  _.each (entityData, function (r) {
 					s += "<tr><td>"+r.representatives+"</td><td>"+r.clients+"</td><td>"+r.registerDate+"</td><td>"+r.expirationDate+"</td><td>"+r.subject+"</td></tr>";
                 });
@@ -865,7 +873,10 @@
 					d.registerAndParliament.push("Rejestr Unii Europejskiej");
 				}
 				if(d.parliamentActivity == "Tak"){
-					d.registerAndParliament.push("Działalność w Sejmie i Senacie");
+					d.registerAndParliament.push("Sejmie i Senacie");
+				}
+				if(d.registerYear.length > 1){
+					d.registerAndParliament.push("Rządzie");
 				}
 
 

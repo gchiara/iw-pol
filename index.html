@@ -45,8 +45,8 @@
 			
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li class="active" id="cm_tool_btn"><a href="" class="menu-link1"><strong>Posiedzenia komisji sejmowych</strong></a></li>
-						<li id="cm_tool_btn"><a href="lobbyists.html" class="menu-link1"><strong>Profesjonalni lobbyści</strong></a></li>
+						<li class="active" id="cm_tool_btn"><a href="" class="menu-link1"><strong>Lobbing w komisjach sejmowych</strong></a></li>
+						<li id="cm_tool_btn"><a href="lobbyists.html" class="menu-link1"><strong>Działalność lobbystów zawodowych</strong></a></li>
 						<li class="dropdown">
 							<a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle menu-link2" href="#" style="width: 120px;">Inne wersje<span class="caret"></span></a>
 							<ul class="dropdown-menu">
@@ -64,7 +64,7 @@
 		</div><!-- container -->
 	</nav>
 	<div class="about-container">
-		Na tej stronie znajdziesz informacje, dotyczące zewnętrznych uczestników komisji sejmowych obecnej kadencji (od 2015 r.). W posiedzeniach komisji biorą udział przedstawiciele wszystkich sektorów i branż, od publicznego po pozarządowy. Sprawdź, jak licznie i w których posiedzeniach uczestniczą.
+		Na tej stronie znajdziesz informacje, dotyczące osób i instytucji, uczestniczących w posiedzeniach komisji sejmowych obecnej kadencji (od 2015 r.). W posiedzeniach komisji biorą udział przedstawiciele wszystkich sektorów i branż, od publicznego po pozarządowy. Sprawdź, kto uczestniczy w posiedzeniach komisji sejmowych, używając interaktywnych wykresów poniżej.<br />
 		Źródłem danych jest strona internetowa Sejmu.		
 	</div>
 	<div class="container_wrap cm_header" id="about_wrap_top">&nbsp;</div>
@@ -130,12 +130,12 @@
 							<br class="clear" />
 						</div>
 						-->
-						<!-- TOP 10 ACTIVOS -->
+						<!-- TOP COMMITTEES -->
 						<div class="chart_box" id="group_container">
 							<h3>Komisje sejmowe</h3>
 							<div class="info_chart">
 								<span class="info">info</span>
-								<p class="desc"></p>
+								<p class="desc">Sprawdź, ilu zewnętrznych uczestników bierze udział w posiedzeniach komisji sejmowych.</p>
 							</div>
 							<div class="topcommittee chart-full"></div>
 							<div class="label">Liczba uczestników</div>
@@ -143,12 +143,12 @@
 						</div>
 					</div>
 					<div class="col-md-4">
-						<!-- TOP 10 PASIVOS -->
+						<!-- CATEGORIES -->
 						<div class="chart_box">
-							<h3>Kto uczestniczy w posiedzeniach<br />komisji sejmowych?</h3>
+							<h3>Kto lobbuje w parlamencie? Sektory</h3>
 							<div class="info_chart">
 								<span class="info">info</span>
-								<p class="desc"></p>
+								<p class="desc">Sprawdź, z jakich sektorów wywodzą się uczestnicy posiedzeń komisji sejmowych.</p>
 							</div>
 							<div class="types chart-full"></div>
 							<div class="label"></div>
@@ -156,12 +156,12 @@
 						</div>
 					</div>
 					<div class="col-md-4" style="margin-top:17px;">
-						<!-- CATEGORIA -->
+						<!-- ENTITIES -->
 						<div class="chart_box" id="categoria">
-							<h3>Nazwa podmiotu<!--span class="info">info</span--></h3>
+							<h3>Kto lobbuje w parlamencie? Instytucje<!--span class="info">info</span--></h3>
 							<div class="info_chart">
 								<span class="info">info</span>
-								<p class="desc"></p>
+								<p class="desc">Sprawdź, z jakich sektorów wywodzą się uczestnicy posiedzeń komisji sejmowych.</p>
 							</div>
 							
 							<div class="topentities"></div>
@@ -180,10 +180,10 @@
 		<div class="container">
 			<div class="row">
 				<div class="content" id="list_content">
-					<h2 class="table_title" style="width: 100%;">POSIEDZENIE
+					<h2 class="table_title" style="width: 100%;">Lobbyści na posiedzeniach komisji sejmowych
 						<div class="info_chart">
 							<span class="info">info</span>
-							<p class="desc"></p>
+							<p class="desc">Sprawdź, jakie instytucje reprezentują uczestnicy posiedzeń komisji sejmowych.</p>
 						</div>
 					</h2>
 					<!-- <div id="last_update">Last updated: <span id="updatedate"></span></div> -->
@@ -364,14 +364,17 @@
 			var chart = dc.pieChart(".types")
 				.innerRadius(80).radius(140)
 				.cy(150)
-				.height(480)
+				.height(550)
 				.dimension(dim)
 				.cap(7)
 				.group(group)
 				.colors(d3.scale.category20())
+				.label(function (d) {
+					return "";
+				})
 				.externalLabels(-40);				
 				//.colorCalculator(function(d, i) { return hosttypecolor[d.key]; });
-				chart.legend(dc.legend().x(30).y(300).itemHeight(13).gap(5));
+				chart.legend(dc.legend().x(30).y(330).itemHeight(13).gap(5));
 			
 			//chart.ordering(function(d) { return rangeorder(d); });
 		}
@@ -392,7 +395,7 @@
 			})(group);
 			var graph = dc.rowChart(".topentities")   
 				.margins({top: 0, right: 3, bottom: 20, left: 3})
-				.height(520)
+				.height(550)
 				//.width(165)
 				.gap(1)
 				.x(d3.scale.ordinal())
@@ -408,7 +411,7 @@
 			//chart.ordering(function(d) { return rangeorder(d); });
 		}
 
-		//Top 10 guests chart
+		//Top committees
 		function drawTopCommittee () {
 			var dim = ndx.dimension (function(d) {
 				if(d.committeeInfo.name){
@@ -422,7 +425,7 @@
 			var filteredGroup = (function(source_group) {
 				return {
 					all: function() {
-						return source_group.top(11).filter(function(d) {
+						return source_group.top(110).filter(function(d) {
 							return (d.key != "" && d.key != "Unknown" && d.key != "Not mentioned" && d.value != 0);
 						});
 					}
@@ -430,7 +433,7 @@
 			})(group);
 			var graph = dc.rowChart(".topcommittee")   
 				.margins({top: 0, right: 3, bottom: 20, left: 3})
-				.height(450)
+				.height(550)
 				//.width(165)
 				.gap(3)
 				.x(d3.scale.ordinal())

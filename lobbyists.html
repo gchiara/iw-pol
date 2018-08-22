@@ -37,7 +37,8 @@
 						<span class="icon-bar"></span>
 					</button>
 					<div class="navbar-brand" id="ti_logo_container">
-						<div class="project-title" href="/"><strong>Jawny<br />Lobbing</strong></div>
+						<div class="project-title project-title1" href="/"><strong>Jawny<br />Lobbing</strong></div>
+						<div class="project-title project-title2" href="/"><strong>Integrity<br />Watch Polska</strong></div>
 					</div>
 				</div>
 			
@@ -55,7 +56,7 @@
 						</li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="about.html">O Integrity Watch</a></li>
+						<li><a href="about.html">O projekcie</a></li>
 						<!-- <li><a href="contact.html">Contacts</a></li> -->
 					</ul>
 				</div>
@@ -148,7 +149,7 @@
 							<br class="clear" />
 						</div>
 					</div>
-					<div class="col-md-6">
+					<div class="col-md-8">
 						<!-- WORDCLOUD -->
 						<div class="chart_box" id="categoria">
 							<h3>Tematy zainteresowań lobbystów<!--span class="info">info</span--></h3>
@@ -162,7 +163,7 @@
 							<br class="clear" />
 						</div>
 					</div>
-					<div class="col-md-6">
+					<div class="col-md-4">
 						<!-- MINISTRIES REGISTRATIONS ROWCHART -->
 						<div class="chart_box" id="categoria">
 							<h3>Działalność w ministerstwach<!--span class="info">info</span--></h3>
@@ -362,7 +363,7 @@
 				.x(d3.scale.ordinal())
 				.elasticX(true)
 				.colorCalculator(function(d, i) {
-					return "#ecb005";
+					return "#84c0e9";
 				})
 				.ordering(function(d){return -d.value})
 				.dimension(dim)
@@ -370,50 +371,6 @@
 
 			graph.xAxis().ticks(5).tickFormat(d3.format("d"));	
 		}
-
-        //Pie chart
-        function drawPie() {
-
-            var dim = ndx.dimension(function(d){ 
-                return d.type;
-            }, true);
-			var group   = dim.group().reduceSum(function(d) { return 1; });
-			var hosttypecolor = {			
-				"Other":"#bbbbbb"
-			};
-
-            var chart = dc.pieChart(".piechart")
-				.innerRadius(80).radius(140)
-				.cy(150)
-				.height(480)
-				.dimension(dim)
-				.cap(7)
-				.group(group)
-				.colors(d3.scale.category20())
-				.externalLabels(-40);				
-				//.colorCalculator(function(d, i) { return hosttypecolor[d.key]; });
-				chart.legend(dc.legend().x(30).y(300).itemHeight(13).gap(5));
-				
-			function rangeorder(d){
-				switch(d.key) {
-					case 'Ministro':
-						return 0;
-						break;
-					case 'Subsecretario':
-						return 1;
-						break;
-					case 'Intendente':
-						return 2;
-						break;
-					case 'Gobernador':
-						return 3;
-						break;
-					default:
-						return 4;
-				}
-			}
-			//chart.ordering(function(d) { return rangeorder(d); });
-        }
 
 		//Register year barchart
         function drawRegisterYear() {
@@ -425,25 +382,39 @@
 				return d.registerYear;
 				//console.log(d.registerYear);
 			});
-			var group   = dim.group().reduceSum(function(d) { return 1; });
+			var group = dim.group().reduceSum(function(d) { return 1; });
 
 			var hosttypecolor = {			
 				"Other":"#bbbbbb"
 			};
-			var graph = dc.barChart(".registeryear")   
-				.margins({top: 0, right: 3, bottom: 20, left: 30})
-				.height(450)
+
+			var graph = dc.barChart(".registeryear")  
+				.margins({top: 0, right: 3, bottom: 60, left: 30})
+				.height(490)
+				.outerPadding(0)
 				.gap(3)
-                .x(d3.scale.linear().domain([min-1,max+1]))
-				//.elasticX(true)
 				.colorCalculator(function(d, i) {
 					return "#ecb005";
 				})
-				.ordering(function(d){return -d.value})
+				/*
+				.on("postRender", function( chart ){
+					adjustBarChartLabels(chart);
+				})
+				*/ 
+				.x(d3.scale.ordinal())
+				.xUnits(dc.units.ordinal)
+				.brushOn(false)
+				.elasticY(true)
+				.yAxisLabel("")
 				.dimension(dim)
 				.group(group);
 
-			graph.xAxis().ticks(5).tickFormat(d3.format("d"));		
+
+			function adjustBarChartLabels(chart) {
+				chart.svg().selectAll('.axis.x text')
+					.style("text-anchor", "end" )
+					.attr("transform", function(d) { return "rotate(-45, -4, 9) "; });
+			}
 		}
 
 		//euRegisterParliament
@@ -459,8 +430,8 @@
 				"Other":"#bbbbbb"
 			};
 			var graph = dc.barChart(".euRegisterParliament")   
-				.margins({top: 0, right: 3, bottom: 20, left: 30})
-				.height(445)
+				.margins({top: 0, right: 3, bottom: 80, left: 30})
+				.height(510)
 				.x(d3.scale.ordinal().domain(["","Rejestr Unii Europejskiej", "Sejmie i Senacie", "Rządzie", ""]))
 				.xUnits(dc.units.ordinal)
 				.gap(30)
@@ -472,6 +443,11 @@
 				.elasticY(true)
 				.centerBar(false)
 				.barPadding(0.4)
+				/*
+				.on("postRender", function( chart ){
+						adjustBarChartLabels(chart);
+				}) 
+				*/
 				.colorCalculator(function(d, i) {
 					if(d.key == "Rządzie"){
 						return "#ecb005";
@@ -482,47 +458,14 @@
 					}
 				})
 				.group(group);
+
+			function adjustBarChartLabels(chart) {
+				chart.svg().selectAll('.axis.x text')
+					.style("text-anchor", "end" )
+					.attr("transform", function(d) { return "rotate(-45, -4, 9) "; });
+			}
 		}
 		
-
-		//Test drawYear with row chart
-		/*
-		function drawRegisterYear() {
-            var dim = ndx.dimension(function(d){
-				//console.log(d);
-				//return d.registerYear;
-				var foo = [];
-
-				for (var i = 0; i < d.registerYear.length; i++) {
-					console.log(d.entityName + ' ' + d.registerYear[i]);
-					foo.push(d.registerYear[i]);
-				}
-				return foo;
-			}, true);
-			//var group   = dim.group().reduceSum(function(d) {   return 1; });
-            var group = dim.group();
-			var hosttypecolor = {			
-				"Other":"#bbbbbb"
-			};
-
-            
-			var graph = dc.rowChart(".registeryear")   
-				.margins({top: 0, right: 3, bottom: 20, left: 3})
-				.height(450)
-				//.width(165)
-				.gap(3)
-				.x(d3.scale.ordinal())
-				.elasticX(true)
-				.colorCalculator(function(d, i) {
-					return "#ecb005";
-				})
-				.ordering(function(d){return -d.value})
-				.dimension(dim)
-				.group(group);
-
-			graph.xAxis().ticks(5).tickFormat(d3.format("d"));	
-		}
-		*/
 
 		function setword(wd) {
 			$("#search-input").val(wd);
@@ -548,7 +491,7 @@
 			 var group   = dim.group().reduceSum(function(d) { return 1; });
 			 var graph =  dc.wordCloud(".wordcloud")
 			  .rotate(function() { return ~~(Math.random() * 2) * 90; })
-			  .size([550,450])
+			  .size([750,470])
 			  .dimension(dim)
 			  .maxWords(50)
 			  .padding(5)
@@ -574,6 +517,9 @@
 				.x(d3.scale.ordinal())
 				.elasticX(true)
 				.colorCalculator(function(d, i) {
+					if(d.key == 'Brak informacji o kontaktach'){
+						return "#ccc";
+					}
 					return "#ecb005";
 				})
 				.ordering(function(d){return -d.value})
@@ -803,7 +749,6 @@
 		drawRegisterYear();
 		drawEuRegisterParliament();
 		drawMinistries();
-    	//drawPie();
 		drawCloud();
 
 		dc.renderAll();  

@@ -1520,7 +1520,7 @@ a#page_title {
 	width: 40%;
 }
 div#ti_logo_container {
-	width: 280px;
+	width: 290px;
 }
 .dropdown-menu li{
 	margin: 1em 0;
@@ -1613,4 +1613,15 @@ div#ti_logo_container {
   @keyframes spin {
 	0% { transform: rotate(0deg); }
 	100% { transform: rotate(360deg); }
+  }
+
+
+
+  .registeryear .axis.x .tick text {
+	transform: translate(-10px,5px) rotate(-45deg);
+	text-anchor: end !important;
+  }
+  .euRegisterParliament .axis.x .tick text {
+	transform: translate(-10px,1px) rotate(-45deg);
+	text-anchor: end !important;
   }

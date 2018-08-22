@@ -58,7 +58,7 @@
 						</li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="about.html">O Integrity Watch</a></li>
+						<li><a href="about.html">O projekcie</a></li>
 						<!-- <li><a href="contact.html">Contacts</a></li> -->
 					</ul>
 				</div>
@@ -164,7 +164,6 @@
 								<span class="info">info</span>
 								<p class="desc">Sprawdź, z jakich sektorów wywodzą się uczestnicy posiedzeń komisji sejmowych.</p>
 							</div>
-							
 							<div class="topentities"></div>
 							<div class="legend">
 							</div>
@@ -210,6 +209,7 @@
 <script>
 	'use strict';
 
+	var attendances = [];
 	var events = [];
 	var people = [];
 	var entities = [];
@@ -337,7 +337,8 @@
 
 		nameEvent = ndx.dimension(function(d) {
 			//return d.person.toLowerCase()+" "+d.subject.toLowerCase()+" "+d.affiliation.toLowerCase()+" "+d.entity.toLowerCase()+ " "+d.topic.toLowerCase()+ " " + "termoffice:"+d.term_office1+" ";
-			return d.entitiesNames.toString()+" "+d.categoriesNames.toString();
+			//console.log(d);
+			return d.entityName.toString()+" "+d.categoriesNames.toString();
 		});
 
 		function rotateBarChartLabels(chart) {
@@ -382,7 +383,7 @@
 		
 		//Top entities
 		function drawEntities() {
-			var dim = ndx.dimension(function(d){ return d.entitiesNames; }, true);
+			var dim = ndx.dimension(function(d){ return d.entityName; });
             var group = dim.group();
 
 			var filteredGroup = (function(source_group) {
@@ -508,7 +509,7 @@
 				  "targets": 4,
 				  "data": function (d, type, val, meta) {
 					 if (!d) return "";
-					 return d.entitiesNames.toString(); 
+					 return d.entityName; 
 					}
 				  }
 				],
@@ -545,13 +546,9 @@
 				s += "<div class='l_name'><label>Komisja:</label> "+d.committeeInfo.name+"</div>";
 				s += "<div class='l_name'><label>Posiedzenie:</label> "+d.code+"</div>";
 				s += "<div class='hr'></div>";
-				s += "<div class='l_name'><label>Zewnętrzni uczestnicy:</label>";
-				_.each(d.participants,function (e){
-					s += e.name+", ";
-				});
-				s += "</div>";
+				s += "<div class='l_name'><label>Zewnętrzni uczestnicy:</label> "+d.participantsNames.join(', ')+"</div>";
 				/* s += "<div class='l_name'><label>Funkcja/ stanowisko:</label> "+d.affiliation+"</div>"; */
-				s += "<div class='l_name'><label>Nazwa podmiotu:</label> "+d.entitiesNames.join(', ')+"</div>";
+				s += "<div class='l_name'><label>Nazwa podmiotu:</label> "+d.entityName+"</div>";
 				s += "<div class='l_name'><label>Kategoria:</label> "+d.categoriesNames.join(', ')+"</div>";
 				
 				
@@ -664,7 +661,90 @@
 	//End grid function
 
 	$(function() {
+
+		//Load datasets
+		d3.json("data/normalized_attendances.json", function (dataset) {
+			attendances = dataset.data.attendances;
+			events = dataset.data.events;
+			people = dataset.data.people;
+			entities = dataset.data.entities;
+			categories = dataset.data.categories;
+			committees = dataset.data.committees;
+
+			//renderLoaded();
+			//var dateFormat = d3.time.format("%d/%m/%Y");
+			var dateFormat = d3.time.format("%Y-%m-%d");
+			var now = Date.now();
+			var a;
+			
+			//Loop through dataset and fix/adjust data
+			var thisid = 0;
+			
+			_.each (attendances, function (d) {
+				d.entityName = "";
+				d.categoriesNames = [];
+
+				//Find event
+				var thisevt = _.find(events,function (m) { return m.id == d.meetingId });
+				if(thisevt){
+					d.date = thisevt.date;
+					d.code = thisevt.code;
+					d.topics = thisevt.topics;
+					d.committeeId = thisevt.committeeId;
+					d.transcriptURL = thisevt.transcriptURL;
+				}
+				//Find committee name
+				d.committeeInfo;
+				var thiscommittee = _.find(committees,function (m) { return m.id == d.committeeId });
+				if(thiscommittee){
+					d.committeeInfo = thiscommittee;
+				}
+				//Get entity name
+				var thisentity = _.find(entities,function (m) { return m.id == d.entityId });
+				if(thisentity){
+					d.entityName = thisentity.name;
+					d.categories = thisentity.categoryIds;
+				}
+				//Get categories names
+				_.each (d.categories, function (p) {
+					var thiscat = _.find(categories,function (m) { return m.id == p });
+					if(thiscat){
+						d.categoriesNames.push(thiscat.name);
+					}
+				});
+				//Get participants names
+				d.participantsNames = [];
+				_.each (d.entityParticipants, function (p) {
+					var thispar = _.find(people,function (m) { return m.personId == p.personId });
+					if(thispar){
+						p.name = thispar.name;
+						d.participantsNames.push(thispar.name);
+					}
+				});
+				
+				//Committee name Fix
+				d.committee_full = "";
+				if(d.committee == "OSZ"){
+					d.committee_full = "Ochrony Środowiska, Zasobów Naturalnych i Leśnictwa";
+				}
+				//Type fix
+				if(d.type == "Instytucja publiczna (np.. NIK)"){
+					d.type = "Instytucja publiczna";
+				}
+				
+				d.num = thisid;
+				thisid ++;
+
+				//console.log(d.entityName);
+
+			});
+			//End loop through dataset
+			$('#loader-container').hide();
+			//Call grid function to create and display charts
+			grid ("#ec",attendances);
+		});
 		
+		/*
 		//Load datasets
 		d3.json("data/normalized.json", function (dataset) {
 			events = dataset.data.events;
@@ -744,6 +824,8 @@
 			//Call grid function to create and display charts
 			grid ("#ec",events);
 		}); 
+		*/
+		
 
 		//Search field functionality
 		$("#search-input").keyup (function () {

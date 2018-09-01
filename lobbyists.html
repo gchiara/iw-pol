@@ -109,16 +109,14 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-4">
-						<!-- EU REGISTER AND PARLIAMENT ACTIVITY BARCHART -->
-						<div class="chart_box">
-							<h3>Lobbyści zawodowi w rządzie, parlamencie i Unii Europejskiej</h3>
+						<!-- MINISTRIES REGISTRATIONS ROWCHART -->
+						<div class="chart_box" id="categoria">
+							<h3>Działalność w ministerstwach<!--span class="info">info</span--></h3>
 							<div class="info_chart">
 								<span class="info">info</span>
-								<p class="desc">Sprawdź, ilu lobbystów zawodowych jest aktywnych na terenie ministerstw, Sejmu i Senatu oraz w instytucjach Unii Europejskiej.</p>
+								<p class="desc">Sprawdź, z jakimi ministerstwami współpracowali lobbyści zawodowi.</p>
 							</div>
-							<!-- <div class="types piechart"></div> -->
-							<div class="euRegisterParliament"></div>
-							<div class="label"></div>
+							<div class="ministriesRegistrations"></div>
 							<br class="clear" />
 						</div>
 					</div>
@@ -131,8 +129,6 @@
 								<p class="desc">Sprawdź, ilu lobbystów zawodowych zarejestrowało się w MSWiA od 2006 r.</p>
 							</div>
 							<div class="registeryear"></div>
-							<div class="legend">
-							</div>
 							<br class="clear" />
 						</div>
 					</div>
@@ -164,16 +160,16 @@
 						</div>
 					</div>
 					<div class="col-md-4">
-						<!-- MINISTRIES REGISTRATIONS ROWCHART -->
-						<div class="chart_box" id="categoria">
-							<h3>Działalność w ministerstwach<!--span class="info">info</span--></h3>
+						<!-- EU REGISTER AND PARLIAMENT ACTIVITY BARCHART -->
+						<div class="chart_box">
+							<h3>Lobbyści zawodowi w rządzie, parlamencie i Unii Europejskiej</h3>
 							<div class="info_chart">
 								<span class="info">info</span>
-								<p class="desc">Sprawdź, z jakimi ministerstwami współpracowali lobbyści zawodowi.</p>
+								<p class="desc">Sprawdź, ilu lobbystów zawodowych jest aktywnych na terenie ministerstw, Sejmu i Senatu oraz w instytucjach Unii Europejskiej.</p>
 							</div>
-							<div class="ministriesRegistrations"></div>
-							<div class="legend">
-							</div>
+							<!-- <div class="types piechart"></div> -->
+							<div class="euRegisterParliament"></div>
+							<div class="label"></div>
 							<br class="clear" />
 						</div>
 					</div>
@@ -431,7 +427,7 @@
 			};
 			var graph = dc.barChart(".euRegisterParliament")   
 				.margins({top: 0, right: 3, bottom: 80, left: 30})
-				.height(510)
+				.height(490)
 				.x(d3.scale.ordinal().domain(["","Rejestr Unii Europejskiej", "Sejmie i Senacie", "Rządzie", ""]))
 				.xUnits(dc.units.ordinal)
 				.gap(30)

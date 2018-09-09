@@ -21,6 +21,14 @@
 	<script src="./js/d3.js"></script>
 	<script src="./js/dc.js"></script>
 	<script src="./js/bootstrap.min.js"></script>
+	<style>
+		.graphs-second-row-toggle {
+			cursor: pointer;
+		}
+		.graphs-second-row {
+			display: none;
+		}
+	</style>
 </head>
 
 <body>
@@ -51,9 +59,9 @@
 						<li class="dropdown">
 							<a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle menu-link2" href="#" style="width: 120px;">Inne wersje<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="http://www.integritywatch.eu">European Union</a></li>
-								<li><a href="http://www.integritywatch.fr">France</a></li>
-								<li><a href="">United Kingdom</a></li>
+								<li><a href="http://www.integritywatch.eu">Unia Europejska</a></li>
+								<li><a href="http://www.integritywatch.fr">Francja</a></li>
+								<li><a href="">Zjednoczone Królestwo</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -110,39 +118,68 @@
 		<div class="container_wrap" id="main_charts_wrap">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-4" style="margin-top:0px;">
-						<!-- TOP 10 ACTIVOS -->
-						<!--
-						<div class="chart_box" id="group_container">
-							<h3>Kadencje sejmu</h3>
+					<div class="col-md-12">
+						<h2 class="table_title" style="width: 100%;margin-bottom:20px;">Kto lobbuje w parlamencie?</h2>
+					</div>
+					<div class="col-md-3">
+						<!-- Pie -->
+						<div class="chart_box">
+							<h3>Kto lobbuje w parlamencie? Sektory</h3>
 							<div class="info_chart">
 								<span class="info">info</span>
-								<p class="desc"></p>
+								<p class="desc">Kto lobbuje w parlamencie? Sektory</p>
 							</div>
-							<select id="termselect">
-								<option disabled selected value=""></option>
-								<option value="V">V</option>
-								<option value="VI">VI</option>
-								<option value="VII">VII</option>
-								<option value="VIII">VIII</option>
-							</select>
-							</select>
-							
-							<br class="clear" />
-						</div>
-						-->
-						<!-- TOP COMMITTEES -->
-						<div class="chart_box" id="group_container">
-							<h3>Komisje sejmowe</h3>
-							<div class="info_chart">
-								<span class="info">info</span>
-								<p class="desc">Sprawdź, ilu zewnętrznych uczestników bierze udział w posiedzeniach komisji sejmowych.</p>
-							</div>
-							<div class="topcommittee chart-full"></div>
-							<div class="label">Liczba uczestników</div>
+							<div class="category-pie chart-full"></div>
+							<div class="label"></div>
 							<br class="clear" />
 						</div>
 					</div>
+					<div class="col-md-3">
+						<!-- TOP 10 A -->
+						<div class="chart_box">
+							<h3>Top 10 organizacji</h3>
+							<div class="info_chart">
+								<span class="info">info</span>
+								<p class="desc">Top 10 organizacji</p>
+							</div>
+							<div class="top10-a chart-full"></div>
+							<div class="label"></div>
+							<br class="clear" />
+						</div>
+					</div>
+					<div class="col-md-3">
+						<!-- TOP 10 B -->
+						<div class="chart_box">
+							<h3>Top 10 organizacji</h3>
+							<div class="info_chart">
+								<span class="info">info</span>
+								<p class="desc">Top 10 organizacji</p>
+							</div>
+							<div class="top10-b chart-full"></div>
+							<div class="label"></div>
+							<br class="clear" />
+						</div>
+					</div>
+					<div class="col-md-3">
+						<!-- TOP 10 C -->
+						<div class="chart_box">
+							<h3>Top 10 organizacji</h3>
+							<div class="info_chart">
+								<span class="info">info</span>
+								<p class="desc">Top 10 organizacji</p>
+							</div>
+							<div class="top10-c chart-full"></div>
+							<div class="label"></div>
+							<br class="clear" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 graphs-second-row-toggle">
+						<h2 class="table_title" style="width: 100%;margin-bottom:20px;">Kto uczestniczy w posiedzeniach komisji sejmowych?</h2>
+					</div>
+				</div>
+				<div class="row graphs-second-row">
 					<div class="col-md-4">
 						<!-- CATEGORIES -->
 						<div class="chart_box">
@@ -153,6 +190,19 @@
 							</div>
 							<div class="types chart-full"></div>
 							<div class="label"></div>
+							<br class="clear" />
+						</div>
+					</div>
+					<div class="col-md-4" style="margin-top:0px;">
+						<!-- TOP COMMITTEES -->
+						<div class="chart_box" id="group_container">
+							<h3>Komisje sejmowe</h3>
+							<div class="info_chart">
+								<span class="info">info</span>
+								<p class="desc">Sprawdź, ilu zewnętrznych uczestników bierze udział w posiedzeniach komisji sejmowych.</p>
+							</div>
+							<div class="topcommittee chart-full"></div>
+							<div class="label">Liczba uczestników</div>
 							<br class="clear" />
 						</div>
 					</div>
@@ -336,9 +386,8 @@
 			.group(all);
 
 		nameEvent = ndx.dimension(function(d) {
-			//return d.person.toLowerCase()+" "+d.subject.toLowerCase()+" "+d.affiliation.toLowerCase()+" "+d.entity.toLowerCase()+ " "+d.topic.toLowerCase()+ " " + "termoffice:"+d.term_office1+" ";
-			//console.log(d);
-			return d.entityName.toString()+" "+d.categoriesNames.toString();
+			//console.log('test '+d.entityName.toString()+" "+d.categoriesNames.toString()+" "+d.participantsNames.toString()+" "+d.topics.toString());
+			return d.entityName.toString()+" "+d.categoriesNames.toString()+" "+d.participantsNames.toString()+" "+d.topics.toString();
 		});
 
 		function rotateBarChartLabels(chart) {
@@ -346,6 +395,155 @@
 				.style("text-anchor", "end" )
 				.attr("transform", function(d) { return "rotate(-45, -4, 9) "; });
 		}
+
+		/* First row */
+
+		//Category pie
+		function drawCategoryPie () {
+
+			var dim = ndx.dimension(function(d){ 
+				var allowedCats = ["fundacje i stowarzyszenia, organizacje społeczne","organizacje branżowe i izby","przedsiębiorstwa i spółdzielnie","związki pracodawców","związki zawodowe","kościoły i związki wyznaniowe","szkoły i placówki wychowawcze","uczelnie i instytuty naukowe","szpitale i przychodnie"];
+				var returnCats = [];
+				d.categoriesNames.forEach(function(item) {
+					if(allowedCats.indexOf(item) > -1){
+						returnCats.push(item);
+					}
+				});
+				return returnCats; 
+			}, true);
+            var group = dim.group();
+			var hosttypecolor = {			
+				"Other":"#bbbbbb"
+			};
+			var chart = dc.pieChart(".category-pie")
+				.innerRadius(40).radius(100)
+				.cy(120)
+				.height(400)
+				.dimension(dim)
+				.cap(7)
+				.group(group)
+				.colors(d3.scale.category20())
+				.label(function (d) {
+					return "";
+				})
+				.externalLabels(-40);				
+				//.colorCalculator(function(d, i) { return hosttypecolor[d.key]; });
+				chart.legend(dc.legend().x(30).y(250).itemHeight(13).gap(5));
+			
+			//chart.ordering(function(d) { return rangeorder(d); });
+		}
+
+		//Top 10 organizacji
+		//top 10 organisation from the "fundacje i stowarzyszenia, organi-zacje społeczne" and "organizacje branżowe i izby" categories.
+		function drawTop10A() {
+			var dim = ndx.dimension (function(d) {
+				//Graph A
+				if(d.categoriesNames.indexOf("fundacje i stowarzyszenia, organi-zacje społeczne") > -1 || d.categoriesNames.indexOf("organizacje branżowe i izby") > -1){
+					return d.entityName;
+				} else {
+					return "";
+				}
+			});	
+			var group = dim.group().reduceSum(function(d) { return 1; });
+			var filteredGroup = (function(source_group) {
+				return {
+					all: function() {
+						return source_group.top(10).filter(function(d) {
+							return (d.key != "" && d.key != "Unknown" && d.key != "Not mentioned" && d.value != 0);
+						});
+					}
+				};
+			})(group);
+			var graph = dc.rowChart(".top10-a")   
+				.margins({top: 0, right: 3, bottom: 20, left: 3})
+				.height(400)
+				//.width(165)
+				.gap(3)
+				.x(d3.scale.ordinal())
+				.elasticX(true)
+				.colorCalculator(function(d, i) {
+					return "#ecb005";
+				})
+				.ordering(function(d){return -d.value})
+				.dimension(dim)
+				.group(filteredGroup);
+
+			graph.xAxis().ticks(5).tickFormat(d3.format("d"));	
+		};
+
+		function drawTop10B() {
+			var dim = ndx.dimension (function(d) {
+				//Graph B
+				if(d.categoriesNames.indexOf("przedsiębiorstwa i spółdzielnie") > -1 || d.categoriesNames.indexOf("spółki skarbu państwa i przed-siębiorstwa państwowe") > -1){
+					return d.entityName;
+				} else {
+					return "";
+				}
+			});	
+			
+			var group = dim.group().reduceSum(function(d) { return 1; });
+			var filteredGroup = (function(source_group) {
+				return {
+					all: function() {
+						return source_group.top(10).filter(function(d) {
+							return (d.key != "" && d.key != "Unknown" && d.key != "Not mentioned" && d.value != 0);
+						});
+					}
+				};
+			})(group);
+			var graph = dc.rowChart(".top10-b")   
+				.margins({top: 0, right: 3, bottom: 20, left: 3})
+				.height(400)
+				//.width(165)
+				.gap(3)
+				.x(d3.scale.ordinal())
+				.elasticX(true)
+				.colorCalculator(function(d, i) {
+					return "#ecb005";
+				})
+				.ordering(function(d){return -d.value})
+				.dimension(dim)
+				.group(filteredGroup);
+
+			graph.xAxis().ticks(5).tickFormat(d3.format("d"));	
+		};
+
+		function drawTop10C() {
+			var dim = ndx.dimension (function(d) {
+				//Graph C
+				if(d.categoriesNames.indexOf("związki zawodowe") > -1){
+					return d.entityName;
+				} else {
+					return "";
+				}
+			});	
+			
+			var group = dim.group().reduceSum(function(d) { return 1; });
+			var filteredGroup = (function(source_group) {
+				return {
+					all: function() {
+						return source_group.top(10).filter(function(d) {
+							return (d.key != "" && d.key != "Unknown" && d.key != "Not mentioned" && d.value != 0);
+						});
+					}
+				};
+			})(group);
+			var graph = dc.rowChart(".top10-c")   
+				.margins({top: 0, right: 3, bottom: 20, left: 3})
+				.height(400)
+				//.width(165)
+				.gap(3)
+				.x(d3.scale.ordinal())
+				.elasticX(true)
+				.colorCalculator(function(d, i) {
+					return "#ecb005";
+				})
+				.ordering(function(d){return -d.value})
+				.dimension(dim)
+				.group(filteredGroup);
+
+			graph.xAxis().ticks(5).tickFormat(d3.format("d"));	
+		};
 
 		//Host Type Chart
 		function drawHostType () {
@@ -652,6 +850,10 @@
 		}
 
 		//Draw graphs
+		drawCategoryPie();
+		drawTop10A();
+		drawTop10B();
+		drawTop10C();
 		drawTable();
 		drawHostType();
 		drawTopCommittee();
@@ -826,12 +1028,18 @@
 		}); 
 		*/
 		
+		//Toggle second row of graphs
+		$('.graphs-second-row-toggle').click(function() {
+			$('.graphs-second-row').toggle();
+			dc.filterAll();
+			dc.renderAll();
+		});
 
 		//Search field functionality
 		$("#search-input").keyup (function () {
 			var s = $(this ).val().toLowerCase();
 			nameEvent.filter(function (d) { 
-				return d.indexOf (s) !== -1;} );
+				return d.toLowerCase().indexOf (s) !== -1;} );
 			$(".resetall").attr("disabled",false);
 			throttle();
 			var throttleTimer;

@@ -214,7 +214,7 @@
 								<span class="info">info</span>
 								<p class="desc">Sprawdź, z jakich sektorów wywodzą się uczestnicy posiedzeń komisji sejmowych.</p>
 							</div>
-							<div class="topentities"></div>
+							<div class="topentities" style="width:100%;"></div>
 							<div class="legend">
 							</div>
 							<br class="clear" />
@@ -402,7 +402,7 @@
 		function drawCategoryPie () {
 
 			var dim = ndx.dimension(function(d){ 
-				var allowedCats = ["fundacje i stowarzyszenia, organizacje społeczne","organizacje branżowe i izby","przedsiębiorstwa i spółdzielnie","związki pracodawców","związki zawodowe","kościoły i związki wyznaniowe","szkoły i placówki wychowawcze","uczelnie i instytuty naukowe","szpitale i przychodnie"];
+				var allowedCats = ["fundacje i stowarzyszenia, organizacje społeczne","organizacje branżowe i izby","przedsiębiorstwa i spółdzielnie","związki pracodawców","związki zawodowe"];
 				var returnCats = [];
 				d.categoriesNames.forEach(function(item) {
 					if(allowedCats.indexOf(item) > -1){
@@ -422,7 +422,11 @@
 				.dimension(dim)
 				.cap(7)
 				.group(group)
-				.colors(d3.scale.category20())
+				.colorAccessor(function (d, i){console.log(i);return i;})
+				//.colors(d3.scale.category20())
+				//.colors(d3.scale.ordinal().range(['#0f4c79','#1f5982','#386b90','#517e9e','#6b91ac','#89a7bd']))
+				.colors(d3.scale.ordinal().range(['#205983','#306e9a','#4487b5','#599fd2','#71bdf3']))
+				//.colors(d3.scale.linear().range(['red','green']))
 				.label(function (d) {
 					return "";
 				})
@@ -462,7 +466,7 @@
 				.x(d3.scale.ordinal())
 				.elasticX(true)
 				.colorCalculator(function(d, i) {
-					return "#ecb005";
+					return "#2371aa";
 				})
 				.ordering(function(d){return -d.value})
 				.dimension(dim)
@@ -499,7 +503,7 @@
 				.x(d3.scale.ordinal())
 				.elasticX(true)
 				.colorCalculator(function(d, i) {
-					return "#ecb005";
+					return "#2371aa";
 				})
 				.ordering(function(d){return -d.value})
 				.dimension(dim)
@@ -536,7 +540,7 @@
 				.x(d3.scale.ordinal())
 				.elasticX(true)
 				.colorCalculator(function(d, i) {
-					return "#ecb005";
+					return "#2371aa";
 				})
 				.ordering(function(d){return -d.value})
 				.dimension(dim)
@@ -568,7 +572,9 @@
 				.dimension(dim)
 				.cap(7)
 				.group(group)
-				.colors(d3.scale.category20())
+				.colorAccessor(function (d, i){console.log(i);return i;})
+				.colors(d3.scale.ordinal().range(['#205983','#28638e','#306e9a','#3b79a7','#4487b5','#4f94c3','#599fd2','#64ade0','#71bdf3']))
+				//.colors(d3.scale.category20())
 				.label(function (d) {
 					return "";
 				})
@@ -601,7 +607,7 @@
 				.x(d3.scale.ordinal())
 				.elasticX(true)
 				.colorCalculator(function(d, i) {
-					return "#84c0e9";
+					return "#2371aa";
 				})
 				.ordering(function(d){return -d.value})
 				.dimension(dim)
@@ -639,7 +645,7 @@
 				.x(d3.scale.ordinal())
 				.elasticX(true)
 				.colorCalculator(function(d, i) {
-					return "#ecb005";
+					return "#2371aa";
 				})
 				.ordering(function(d){return -d.value})
 				.dimension(dim)

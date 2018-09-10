@@ -359,7 +359,7 @@
 				.x(d3.scale.ordinal())
 				.elasticX(true)
 				.colorCalculator(function(d, i) {
-					return "#84c0e9";
+					return "#039aab";
 				})
 				.ordering(function(d){return -d.value})
 				.dimension(dim)
@@ -390,7 +390,7 @@
 				.outerPadding(0)
 				.gap(3)
 				.colorCalculator(function(d, i) {
-					return "#ecb005";
+					return "#039aab";
 				})
 				/*
 				.on("postRender", function( chart ){
@@ -446,11 +446,11 @@
 				*/
 				.colorCalculator(function(d, i) {
 					if(d.key == "Rządzie"){
-						return "#ecb005";
+						return "#039aab";
 					} else if(d.key == "Rejestr Unii Europejskiej"){
-						return "#003399";
+						return "#036a7b";
 					} else if(d.key == "Sejmie i Senacie"){
-						return "#c31a1f";
+						return "#33cadb";
 					}
 				})
 				.group(group);
@@ -491,7 +491,7 @@
 			  .dimension(dim)
 			  .maxWords(50)
 			  .padding(5)
-			  .ordinalColors(['#133d82', '#2163ad', '#3893d1', '#84c0e8', '#cfecff'])
+			  .ordinalColors(['#73daeb', '#33cadb', '#039aab', '#037a8b', '#035a6b'])
 			  .group(group)
 			  .scale(d3.scale.linear().domain([10,100]).range([6, 30]))
 			  .textAccessor(function(d) {return d.subject;})
@@ -504,7 +504,7 @@
 			var dim = ndx.dimension(function(d){ return d.ministriesArray; }, true);
             var group = dim.group();
 			var hosttypecolor = {			
-				"Other":"#bbbbbb"
+				"Other":"#43daeb"
 			};
 			var graph = dc.rowChart(".ministriesRegistrations")   
 				.margins({top: 0, right: 3, bottom: 20, left: 3})
@@ -514,9 +514,9 @@
 				.elasticX(true)
 				.colorCalculator(function(d, i) {
 					if(d.key == 'Brak informacji o kontaktach'){
-						return "#ccc";
+						return "#63cadb";
 					}
-					return "#ecb005";
+					return "#039aab";
 				})
 				.ordering(function(d){return -d.value})
 				.dimension(dim)

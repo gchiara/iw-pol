@@ -145,7 +145,7 @@
 							<br class="clear" />
 						</div>
 					</div>
-					<div class="col-md-8">
+					<div class="col-md-6">
 						<!-- WORDCLOUD -->
 						<div class="chart_box" id="categoria">
 							<h3>Tematy zainteresowań lobbystów<!--span class="info">info</span--></h3>
@@ -159,7 +159,7 @@
 							<br class="clear" />
 						</div>
 					</div>
-					<div class="col-md-4">
+					<div class="col-md-3">
 						<!-- EU REGISTER AND PARLIAMENT ACTIVITY BARCHART -->
 						<div class="chart_box">
 							<h3>Lobbyści zawodowi w rządzie, parlamencie i Unii Europejskiej</h3>
@@ -169,6 +169,19 @@
 							</div>
 							<!-- <div class="types piechart"></div> -->
 							<div class="euRegisterParliament"></div>
+							<div class="label"></div>
+							<br class="clear" />
+						</div>
+					</div>
+					<div class="col-md-3">
+						<!-- Types -->
+						<div class="chart_box" id="group_container">
+							<h3>Top lobbyists by number of subjects</h3>
+							<div class="info_chart">
+								<span class="info">info</span>
+								<p class="desc"></p>
+							</div>
+							<div class="top10subjects chart-full"></div>
 							<div class="label"></div>
 							<br class="clear" />
 						</div>
@@ -354,7 +367,7 @@
 			};
 			var graph = dc.rowChart(".types")   
 				.margins({top: 0, right: 3, bottom: 20, left: 3})
-				.height(450)
+				.height(400)
 				.gap(3)
 				.x(d3.scale.ordinal())
 				.elasticX(true)
@@ -367,6 +380,39 @@
 
 			graph.xAxis().ticks(5).tickFormat(d3.format("d"));	
 		}
+
+		//Top amount of subjects rowchart
+		function drawSubjectAmount () {
+            var dim = ndx.dimension(function(d){ return d.entityName; });
+			var group = dim.group().reduceSum(function(d) { return d.type.length; });
+			var filteredGroup = (function(source_group) {
+				return {
+					all: function() {
+						return source_group.top(10).filter(function(d) {
+							return (d.key != "" && d.key != "Unknown" && d.key != "Not mentioned" && d.value != 0);
+						});
+					}
+				};
+			})(group);
+			var hosttypecolor = {			
+				"Other":"#bbbbbb"
+			};
+			var graph = dc.rowChart(".top10subjects")   
+				.margins({top: 0, right: 3, bottom: 20, left: 3})
+				.height(370)
+				.gap(3)
+				.x(d3.scale.ordinal())
+				.elasticX(true)
+				.colorCalculator(function(d, i) {
+					return "#039aab";
+				})
+				.ordering(function(d){return -d.value})
+				.dimension(dim)
+				.group(filteredGroup);
+
+			graph.xAxis().ticks(5).tickFormat(d3.format("d"));	
+		}
+		
 
 		//Register year barchart
         function drawRegisterYear() {
@@ -386,7 +432,7 @@
 
 			var graph = dc.barChart(".registeryear")  
 				.margins({top: 0, right: 3, bottom: 60, left: 30})
-				.height(490)
+				.height(440)
 				.outerPadding(0)
 				.gap(3)
 				.colorCalculator(function(d, i) {
@@ -427,7 +473,7 @@
 			};
 			var graph = dc.barChart(".euRegisterParliament")   
 				.margins({top: 0, right: 3, bottom: 80, left: 30})
-				.height(490)
+				.height(425)
 				.x(d3.scale.ordinal().domain(["","Rejestr Unii Europejskiej", "Sejmie i Senacie", "Rządzie", ""]))
 				.xUnits(dc.units.ordinal)
 				.gap(30)
@@ -487,7 +533,7 @@
 			 var group   = dim.group().reduceSum(function(d) { return 1; });
 			 var graph =  dc.wordCloud(".wordcloud")
 			  .rotate(function() { return ~~(Math.random() * 2) * 90; })
-			  .size([750,470])
+			  .size([550,380])
 			  .dimension(dim)
 			  .maxWords(50)
 			  .padding(5)
@@ -496,7 +542,7 @@
 			  .scale(d3.scale.linear().domain([10,100]).range([6, 30]))
 			  .textAccessor(function(d) {return d.subject;})
 			  .onClick(function(d){setword(d.key);})
-			  .stopWords (/^()$/);
+			  .stopWords (/^(z|rp|2|do|nr|i|na|dot|7%owej|GUO|od|przez|zmanie|ustawy|w|oraz|dot)$/);
 		}
 
 		//Ministries
@@ -508,7 +554,7 @@
 			};
 			var graph = dc.rowChart(".ministriesRegistrations")   
 				.margins({top: 0, right: 3, bottom: 20, left: 3})
-				.height(450)
+				.height(400)
 				.gap(3)
 				.x(d3.scale.ordinal())
 				.elasticX(true)
@@ -746,6 +792,7 @@
 		drawEuRegisterParliament();
 		drawMinistries();
 		drawCloud();
+		drawSubjectAmount();
 
 		dc.renderAll();  
 	}
@@ -808,6 +855,7 @@
 						d.type.push(subjectTypes['st'+i]);
 					};
 				}
+				console.log(d.type.length);
 				
 				d.num = thisid;
 				thisid ++;

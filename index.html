@@ -551,16 +551,20 @@
 
 		//Host Type Chart
 		function drawHostType () {
-			/*
-			var dim = ndx.dimension (function(d) {
-				if(d.type && d.type != ""){
-					return d.type;   
-				}
-			});
-			var group   = dim.group().reduceSum(function(d) {   return 1; });
-			*/
 
-			var dim = ndx.dimension(function(d){ return d.categoriesNames; }, true);
+			//var dim = ndx.dimension(function(d){ return d.categoriesNames; }, true);
+			var dim = ndx.dimension(function(d){ 
+				var notAllowedCats = ["Kancelaria Sejmu","pracownicy Sejmu i Senatu","władza centralna (rząd, prezydent)"];
+				var returnCats = [];
+				d.categoriesNames.forEach(function(item) {
+					if(notAllowedCats.indexOf(item) == -1){
+						returnCats.push(item);
+					}
+				});
+				return returnCats; 
+				//return d.categoriesNames; 
+			}, true);
+
             var group = dim.group();
 			var hosttypecolor = {			
 				"Other":"#bbbbbb"
@@ -587,7 +591,21 @@
 		
 		//Top entities
 		function drawEntities() {
-			var dim = ndx.dimension(function(d){ return d.entityName; });
+			var dim = ndx.dimension(function(d){ 
+				var notAllowedCats = ["Kancelaria Sejmu","pracownicy Sejmu i Senatu","władza centralna (rząd, prezydent)"];
+				var allowed = true;
+				var result = [];
+				d.categoriesNames.forEach(function(item) {
+					if(notAllowedCats.indexOf(item) > -1){
+						allowed = false;
+					}
+				});
+				if(allowed){
+					result.push(d.entityName);
+				}
+				return result;
+			}, true);
+
             var group = dim.group();
 
 			var filteredGroup = (function(source_group) {
@@ -619,13 +637,29 @@
 
 		//Top committees
 		function drawTopCommittee () {
-			var dim = ndx.dimension (function(d) {
-				if(d.committeeInfo.name){
-					return d.committeeInfo.name;
-				} else {
-					return "N/A"
+			
+			
+			var dim = ndx.dimension(function(d){ 
+				var notAllowedCats = ["Kancelaria Sejmu","pracownicy Sejmu i Senatu","władza centralna (rząd, prezydent)"];
+				var allowed = true;
+				var result = [];
+				
+				d.categoriesNames.forEach(function(item) {
+					if(notAllowedCats.indexOf(item) > -1){
+						allowed = false;
+					}
+				});
+				
+				if(allowed){
+					if(d.committeeInfo.name){
+						result.push(d.committeeInfo.name);
+					} else {
+						result.push("N/A");
+					}
 				}
-			});	
+				return result;
+			}, true);
+			
 			
 			var group = dim.group().reduceSum(function(d) { return 1; });
 			var filteredGroup = (function(source_group) {

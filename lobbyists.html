@@ -12,217 +12,217 @@
 	<title>Profesjonalni lobbyści</title>
 	<link rel="shortcut icon" href="favicon.ico">
 	<link href="css/bower.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="./css/dc.css" />
+	<link rel="stylesheet" type="text/css" href="./css/dc.css" />
 	<link rel="stylesheet" type="text/css" href="./css/style.css"/>
 	<script src="./js/jquery.min.js"></script>
 	<script src="./js/jquery.dataTables.min.js"></script>
 	<script src="./js/underscore-min.js"></script>
-    <script src="./js/crossfilter2.min.js"></script>
+	<script src="./js/crossfilter2.min.js"></script>
 	<script src="./js/d3.js"></script>
 	<script src="./js/dc.js"></script>
-    <script src="./js/bootstrap.min.js"></script>  
+	<script src="./js/bootstrap.min.js"></script>
 </head>
 
 <body class="lobbyists-tab">
-	<div id="loader-container">
-		<div id="loader"></div>
-	</div>
-	<nav class="navbar navbar-default" role="navigation">
-		<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<div class="navbar-brand" id="ti_logo_container">
-						<div class="project-title project-title1" href="/"><strong>Jawny<br />Lobbing</strong></div>
-						<div class="project-title project-title2" href="/"><strong>Integrity<br />Watch Polska</strong></div>
-					</div>
-				</div>
-			
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav">
-                        <li id="cm_tool_btn"><a href="index.html" class="menu-link1"><strong>Lobbing w komisjach sejmowych</strong></a></li>
-						<li class="active" id="cm_tool_btn"><a href="lobbyists.html" class="menu-link1"><strong>Działalność lobbystów zawodowych</strong></a></li>
-						<li class="dropdown">
-							<a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle menu-link2" href="#" style="width: 120px;">Inne wersje<span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="http://www.integritywatch.eu">Unia Europejska</a></li>
-								<li><a href="http://www.integritywatch.fr">Francja</a></li>
-								<li><a href="">Zjednoczone Królestwo</a></li>
-							</ul>
-						</li>
-					</ul>
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="about.html">O projekcie</a></li>
-						<!-- <li><a href="contact.html">Contacts</a></li> -->
-					</ul>
-				</div>
-		</div><!-- container -->
-	</nav>
-	<div class="about-container about-container-lobbyists">
-		Na tej stronie znajdziesz najważniejsze informacje, dotyczące działalności lobbystów zawodowych w Polsce, czyli osób i firm, które zawodowo wykonują usługi lobbingowe na zle-cenie innych instytucji i przedsiębiorstw. Sprawdź, kim są lobbyści zawodowi i co ich interesuje, używając interaktywnych wykresów poniżej.<br />
-		Źródłem danych są Ministerstwo Spraw Wewnętrznych, Sejm i Rejestr Przejrzystości UE.
-	</div>
-	<div class="container_wrap cm_header" id="about_wrap_top">&nbsp;</div>
+<div id="loader-container">
+	<div id="loader"></div>
+</div>
+<nav class="navbar navbar-default" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<div class="navbar-brand" id="ti_logo_container">
+				<div class="project-title project-title1" href="/"><strong>Jawny<br />Lobbing</strong></div>
+				<div class="project-title project-title2" href="/"><strong>Integrity<br />Watch Polska</strong></div>
+			</div>
+		</div>
 
-	<div class="container_wrap filter_cm" id="filter_wrap">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-4" id="filter_field_container">
-					<p>Filtruj według:</p>
-					<div class="input-group">
-							<input type="text" id="search-input" class="form-control input-lg" placeholder="szukaj ...">
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li id="cm_tool_btn"><a href="index.html" class="menu-link1"><strong>Lobbing w komisjach sejmowych</strong></a></li>
+				<li class="active" id="cm_tool_btn"><a href="lobbyists.html" class="menu-link1"><strong>Działalność lobbystów zawodowych</strong></a></li>
+				<li class="dropdown">
+					<a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle menu-link2" href="#" style="width: 120px;">Inne wersje<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="http://www.integritywatch.eu">Unia Europejska</a></li>
+						<li><a href="http://www.integritywatch.fr">Francja</a></li>
+						<li><a href="">Zjednoczone Królestwo</a></li>
+					</ul>
+				</li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="about.html">O projekcie</a></li>
+				<!-- <li><a href="contact.html">Contacts</a></li> -->
+			</ul>
+		</div>
+	</div><!-- container -->
+</nav>
+<div class="about-container about-container-lobbyists">
+	Na tej stronie znajdziesz najważniejsze informacje, dotyczące działalności lobbystów zawodowych w Polsce, czyli osób i firm, które zawodowo wykonują usługi lobbingowe na zle-cenie innych instytucji i przedsiębiorstw. Sprawdź, kim są lobbyści zawodowi i co ich interesuje, używając interaktywnych wykresów poniżej.<br />
+	Źródłem danych są Ministerstwo Spraw Wewnętrznych, Sejm i Rejestr Przejrzystości UE.
+</div>
+<div class="container_wrap cm_header" id="about_wrap_top">&nbsp;</div>
+
+<div class="container_wrap filter_cm" id="filter_wrap">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4" id="filter_field_container">
+				<p>Filtruj według:</p>
+				<div class="input-group">
+					<input type="text" id="search-input" class="form-control input-lg" placeholder="szukaj ...">
+				</div>
+			</div>
+			<div class="col-md-7" id="filter_numbers">
+				<div class="row">
+					<div class="col-md-5" id="currently_selected_text"><p>Wybrany:</p></div>
+
+					<div class="col-md-3 filter_number">
+						<div id="mep_number" class="dc-data-count">
+							<span id="abig_number" class="big_number filter-count"></span>z <strong class="total-count"></strong><br /> posiedzenie
+						</div>
+					</div>
+					<div class="col-md-3 filter_number">
+						<div id="org_number" class="org-count">
+							<!-- <span class="big_number filter-count"></span>of <strong class="total-count"></strong><br /> people -->
+						</div>
 					</div>
 				</div>
-				<div class="col-md-7" id="filter_numbers">
-					<div class="row">
-						<div class="col-md-5" id="currently_selected_text"><p>Wybrany:</p></div>
-						
-						<div class="col-md-3 filter_number">
-							<div id="mep_number" class="dc-data-count">
-								<span id="abig_number" class="big_number filter-count"></span>z <strong class="total-count"></strong><br /> posiedzenie
-							</div>
-						</div>
-						<div class="col-md-3 filter_number">
-							<div id="org_number" class="org-count">
-								<!-- <span class="big_number filter-count"></span>of <strong class="total-count"></strong><br /> people -->
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-1" id="resetall_container">
-					<button class="btn resetall">Zresetuj<br />filtry</button>
-				</div>
+			</div>
+			<div class="col-md-1" id="resetall_container">
+				<button class="btn resetall">Zresetuj<br />filtry</button>
 			</div>
 		</div>
 	</div>
-	<div class="row" style="width:10px;">
-		<div class="col-md-4"></div>
-		<div class="col-md-4"></div>
-		<div class="col-md-4"></div>
-	</div>
-	<div id="ec">
-		<div class="container_wrap" id="main_charts_wrap">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-4">
-						<!-- MINISTRIES REGISTRATIONS ROWCHART -->
-						<div class="chart_box" id="categoria">
-							<h3>Działalność w ministerstwach<!--span class="info">info</span--></h3>
-							<div class="info_chart">
-								<span class="info">info</span>
-								<p class="desc">Sprawdź, z jakimi ministerstwami współpracowali lobbyści zawodowi.</p>
-							</div>
-							<div class="ministriesRegistrations"></div>
-							<br class="clear" />
-						</div>
-					</div>
-					<div class="col-md-4">
-						<!-- REGISTRATION DATE -->
-						<div class="chart_box" id="categoria">
-							<h3>Rejestr lobbystów zawodowych MSWiA<!--span class="info">info</span--></h3>
-							<div class="info_chart">
-								<span class="info">info</span>
-								<p class="desc">Sprawdź, ilu lobbystów zawodowych zarejestrowało się w MSWiA od 2006 r.</p>
-							</div>
-							<div class="registeryear"></div>
-							<br class="clear" />
-						</div>
-					</div>
-					<div class="col-md-4">
-						<!-- Types -->
-						<div class="chart_box" id="group_container">
-							<h3>Obszary aktywności lobbystów zawodowych</h3>
-							<div class="info_chart">
-								<span class="info">info</span>
-								<p class="desc">Sprawdź, w jakich obszarach prac rządu i parlamentu lobbyści zawodowi są najbardziej aktywni.</p>
-							</div>
-							<div class="types chart-full"></div>
-							<div class="label"></div>
-							<br class="clear" />
-						</div>
-					</div>
-					<div class="col-md-6">
-						<!-- WORDCLOUD -->
-						<div class="chart_box" id="categoria">
-							<h3>Tematy zainteresowań lobbystów<!--span class="info">info</span--></h3>
-							<div class="info_chart">
-								<span class="info">info</span>
-								<p class="desc">Kliknij w wybrane słowo i sprawdź, który lobbysta użył go w opisie przedmiotu swoich zainteres-owań.</p>
-							</div>
-							<div class="wordcloud"></div>
-							<div class="legend">
-							</div>
-							<br class="clear" />
-						</div>
-					</div>
-					<div class="col-md-3">
-						<!-- EU REGISTER AND PARLIAMENT ACTIVITY BARCHART -->
-						<div class="chart_box">
-							<h3>Lobbyści zawodowi w rządzie, parlamencie i Unii Europejskiej</h3>
-							<div class="info_chart">
-								<span class="info">info</span>
-								<p class="desc">Sprawdź, ilu lobbystów zawodowych jest aktywnych na terenie ministerstw, Sejmu i Senatu oraz w instytucjach Unii Europejskiej.</p>
-							</div>
-							<!-- <div class="types piechart"></div> -->
-							<div class="euRegisterParliament" style="width:100%;"></div>
-							<div class="label"></div>
-							<br class="clear" />
-						</div>
-					</div>
-					<div class="col-md-3">
-						<!-- Types -->
-						<div class="chart_box" id="group_container">
-							<h3>Top lobbyists by number of subjects</h3>
-							<div class="info_chart">
-								<span class="info">info</span>
-								<p class="desc"></p>
-							</div>
-							<div class="top10subjects chart-full"></div>
-							<div class="label"></div>
-							<br class="clear" />
-						</div>
-					</div>
-				</div>
-
-			</div>
-		</div>	
-	</div>
-
-	<div class="container_wrap" id="list_container">
+</div>
+<div class="row" style="width:10px;">
+	<div class="col-md-4"></div>
+	<div class="col-md-4"></div>
+	<div class="col-md-4"></div>
+</div>
+<div id="ec">
+	<div class="container_wrap" id="main_charts_wrap">
 		<div class="container">
 			<div class="row">
-				<div class="content" id="list_content">
-					<h2 class="table_title" style="width: 100%;">Lobbyści zawodowi
+				<div class="col-md-4">
+					<!-- MINISTRIES REGISTRATIONS ROWCHART -->
+					<div class="chart_box" id="categoria">
+						<h3>Działalność w ministerstwach<!--span class="info">info</span--></h3>
 						<div class="info_chart">
 							<span class="info">info</span>
-							<p class="desc">Sprawdź więcej informacji na temat lobbystów zawodowych i działalności w Sejmie, rządzie i Unii Europejskiej.</p>
+							<p class="desc">Sprawdź, z jakimi ministerstwami współpracowali lobbyści zawodowi.</p>
 						</div>
-					</h2>
-					<!-- <div id="last_update">Last updated: <span id="updatedate"></span></div> -->
+						<div class="ministriesRegistrations"></div>
+						<br class="clear" />
+					</div>
 				</div>
-				
-				<div class="col-md-12 table-responsive">
-					<table class="table table-hover dc-data-grid tablesorter-bootstrap">
-						<thead>
-							<tr class="header">
-								<th class="header">Numer re-jestrze</th>
-								<th class="header">Data rejestracji</th>
-								<th class="header">Nazwa lobbysty zawodowego</th>
-								<th class="header">Rejestr UE (T/N)</th>
-								<th class="header">Przedmiot lobbingu w EU rejestr</th> 
-                                <th class="header">Działalność w minister-stwach</th> 
-                                <th class="header">Działalność w Sejmie i Senacie</th>
-							</tr>
-						</thead>
-					</table>
+				<div class="col-md-4">
+					<!-- REGISTRATION DATE -->
+					<div class="chart_box" id="categoria">
+						<h3>Rejestr lobbystów zawodowych MSWiA<!--span class="info">info</span--></h3>
+						<div class="info_chart">
+							<span class="info">info</span>
+							<p class="desc">Sprawdź, ilu lobbystów zawodowych zarejestrowało się w MSWiA od 2006 r.</p>
+						</div>
+						<div class="registeryear"></div>
+						<br class="clear" />
+					</div>
 				</div>
+				<div class="col-md-4">
+					<!-- Types -->
+					<div class="chart_box" id="group_container">
+						<h3>Obszary aktywności lobbystów zawodowych</h3>
+						<div class="info_chart">
+							<span class="info">info</span>
+							<p class="desc">Sprawdź, w jakich obszarach prac rządu i parlamentu lobbyści zawodowi są najbardziej aktywni.</p>
+						</div>
+						<div class="types chart-full"></div>
+						<div class="label"></div>
+						<br class="clear" />
+					</div>
+				</div>
+				<div class="col-md-6">
+					<!-- WORDCLOUD -->
+					<div class="chart_box" id="categoria">
+						<h3>Tematy zainteresowań lobbystów<!--span class="info">info</span--></h3>
+						<div class="info_chart">
+							<span class="info">info</span>
+							<p class="desc">Kliknij w wybrane słowo i sprawdź, który lobbysta użył go w opisie przedmiotu swoich zainteres-owań.</p>
+						</div>
+						<div class="wordcloud"></div>
+						<div class="legend">
+						</div>
+						<br class="clear" />
+					</div>
+				</div>
+				<div class="col-md-3">
+					<!-- EU REGISTER AND PARLIAMENT ACTIVITY BARCHART -->
+					<div class="chart_box">
+						<h3>Lobbyści zawodowi w rządzie, parlamencie i Unii Europejskiej</h3>
+						<div class="info_chart">
+							<span class="info">info</span>
+							<p class="desc">Sprawdź, ilu lobbystów zawodowych jest aktywnych na terenie ministerstw, Sejmu i Senatu oraz w instytucjach Unii Europejskiej.</p>
+						</div>
+						<!-- <div class="types piechart"></div> -->
+						<div class="euRegisterParliament" style="width:100%;"></div>
+						<div class="label"></div>
+						<br class="clear" />
+					</div>
+				</div>
+				<div class="col-md-3">
+					<!-- Types -->
+					<div class="chart_box" id="group_container">
+						<h3>Top 10 lobbystów zawodowych</h3>
+						<div class="info_chart">
+							<span class="info">info</span>
+							<p class="desc">Sprawdź lobbystów, którzy lobbyści deklarują zainteresowanie największą liczbą spraw.</p>
+						</div>
+						<div class="top10subjects chart-full"></div>
+						<div class="label"></div>
+						<br class="clear" />
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<div class="container_wrap" id="list_container">
+	<div class="container">
+		<div class="row">
+			<div class="content" id="list_content">
+				<h2 class="table_title" style="width: 100%;">Lobbyści zawodowi
+					<div class="info_chart">
+						<span class="info">info</span>
+						<p class="desc">Sprawdź więcej informacji na temat lobbystów zawodowych i działalności w Sejmie, rządzie i Unii Europejskiej.</p>
+					</div>
+				</h2>
+				<!-- <div id="last_update">Last updated: <span id="updatedate"></span></div> -->
+			</div>
+
+			<div class="col-md-12 table-responsive">
+				<table class="table table-hover dc-data-grid tablesorter-bootstrap">
+					<thead>
+					<tr class="header">
+						<th class="header">Numer w rejestrze</th>
+						<th class="header">Data rejestracji</th>
+						<th class="header">Nazwa lobbysty zawodowego</th>
+						<th class="header">Rejestr UE (T/N)</th>
+						<th class="header">Przedmiot lobbingu w EU rejestr</th>
+						<th class="header">Działalność w ministerstwach</th>
+						<th class="header">Działalność w Sejmie i Senacie</th>
+					</tr>
+					</thead>
+				</table>
 			</div>
 		</div>
 	</div>
+</div>
 
 <script>
 	'use strict';
@@ -245,7 +245,7 @@
 	var dmy = d3.time.format("%d/%m/%Y");
 	jQuery.extend( jQuery.fn.dataTableExt.oSort, {
 		"date-eu-pre": function ( date ) {
-					return dmy.parse(date);
+			return dmy.parse(date);
 		},
 		"date-eu-asc": function ( a, b ) {
 			return ((a < b) ? -1 : ((a > b) ? 1 : 0));
@@ -263,7 +263,7 @@
 			$('#collapse_about a').toggleClass('closed');
 			$('#about_wrap').slideToggle('slow', function () {
 				$('#about_wrap_top').slideToggle('fast')
-			})	
+			})
 		})
 		$('.info').click(function(ev) {
 			ev.preventDefault();
@@ -285,62 +285,62 @@
 
 	//Grid function (generates graphs and counts)
 	function grid (selector,data) {
-		
+
 		var ndx = crossfilter(data),
-				all = ndx.groupAll();
+			all = ndx.groupAll();
 
 		var color = d3.scale.linear()
-					.clamp(true)
-					.domain([0,1, 70])
-					.range(["white","#ffc7b6", "#f85631"])
-					.interpolate(d3.interpolateHcl);
+			.clamp(true)
+			.domain([0,1, 70])
+			.range(["white","#ffc7b6", "#f85631"])
+			.interpolate(d3.interpolateHcl);
 
 		evt = ndx.dimension(function(d) {
-			return d.num;		
+			return d.num;
 		})
-		
+
 		var eventgroup   = evt.group().reduce(
-			function(p,d) {  
+			function(p,d) {
 				p.nb +=1;
 				if (!d.organisation)
-				  return p;
+					return p;
 				p.fte += d.fte;
 				p.accredited += d.accredited;
 				return p;
 			},
-			function(p,d) {  
+			function(p,d) {
 				p.nb -=1;
-				 if (!d.organisation)
-				   return p;
+				if (!d.organisation)
+					return p;
 				p.fte -= d.fte;
 				p.accredited -= d.accredited;
 				return p;
 			},
-			function(p,d) {  
-				return {nb:0,fte:0,accredited:0}; 
+			function(p,d) {
+				return {nb:0,fte:0,accredited:0};
 			}
 		);
-		
+
 		var count=dc.dataCount(".dc-data-count")
 			.dimension(eventgroup)
 			.group({value: function() {
-				return eventgroup.all().filter(function(kv) { return kv.value.nb>0; }).length;
-			}});
+					return eventgroup.all().filter(function(kv) { return kv.value.nb>0; }).length;
+				}});
 
 		count.on("renderlet.resetall", function(c) {
-				var total=c.dimension().size();
-				var filtered= c.group().value();
-				var disabled= (total == filtered);
+			var total=c.dimension().size();
+			var filtered= c.group().value();
+			var disabled= (total == filtered);
 
-				$(".resetall").attr("disabled",disabled);
+			$(".resetall").attr("disabled",disabled);
 
-				if (filtered >=0) {
-					var one2one=0;
-					eventgroup.all().forEach(function(d) { if(d.value ==1) one2one ++;});
-					var ratio=Math.round(100-one2one/filtered*100);
-					$(".one2one").html( ratio + "% collective meetings");
-				}
-		  RefreshTable();
+			if (filtered >=0) {
+				var one2one=0;
+				eventgroup.all().forEach(function(d) { if(d.value ==1) one2one ++;});
+				var ratio=Math.round(100-one2one/filtered*100);
+				$(".one2one").html( ratio + "% collective meetings");
+			}
+			RefreshTable();
 		});
 
 		dc.dataCount(".dc-data-count2")
@@ -360,12 +360,12 @@
 
 		//Type Chart
 		function drawHostType () {
-            var dim = ndx.dimension(function(d){ return d.type; }, true);
-            var group = dim.group();
-			var hosttypecolor = {			
+			var dim = ndx.dimension(function(d){ return d.type; }, true);
+			var group = dim.group();
+			var hosttypecolor = {
 				"Other":"#bbbbbb"
 			};
-			var graph = dc.rowChart(".types")   
+			var graph = dc.rowChart(".types")
 				.margins({top: 0, right: 3, bottom: 20, left: 3})
 				.height(400)
 				.gap(3)
@@ -378,12 +378,12 @@
 				.dimension(dim)
 				.group(group);
 
-			graph.xAxis().ticks(5).tickFormat(d3.format("d"));	
+			graph.xAxis().ticks(5).tickFormat(d3.format("d"));
 		}
 
 		//Top amount of subjects rowchart
 		function drawSubjectAmount () {
-            var dim = ndx.dimension(function(d){ return d.entityName; });
+			var dim = ndx.dimension(function(d){ return d.entityName; });
 			var group = dim.group().reduceSum(function(d) { return d.type.length; });
 			var filteredGroup = (function(source_group) {
 				return {
@@ -394,10 +394,10 @@
 					}
 				};
 			})(group);
-			var hosttypecolor = {			
+			var hosttypecolor = {
 				"Other":"#bbbbbb"
 			};
-			var graph = dc.rowChart(".top10subjects")   
+			var graph = dc.rowChart(".top10subjects")
 				.margins({top: 0, right: 3, bottom: 20, left: 3})
 				.height(370)
 				.gap(3)
@@ -410,27 +410,27 @@
 				.dimension(dim)
 				.group(filteredGroup);
 
-			graph.xAxis().ticks(5).tickFormat(d3.format("d"));	
+			graph.xAxis().ticks(5).tickFormat(d3.format("d"));
 		}
-		
+
 
 		//Register year barchart
-        function drawRegisterYear() {
+		function drawRegisterYear() {
 
-            var min = 2006;
-            var max = 2018;
-			
+			var min = 2006;
+			var max = 2018;
+
 			var dim = ndx.dimension(function(d){
 				return d.registerYear;
 				//console.log(d.registerYear);
 			});
 			var group = dim.group().reduceSum(function(d) { return 1; });
 
-			var hosttypecolor = {			
+			var hosttypecolor = {
 				"Other":"#bbbbbb"
 			};
 
-			var graph = dc.barChart(".registeryear")  
+			var graph = dc.barChart(".registeryear")
 				.margins({top: 0, right: 30, bottom: 60, left: 30})
 				.height(440)
 				.outerPadding(0)
@@ -442,7 +442,7 @@
 				.on("postRender", function( chart ){
 					adjustBarChartLabels(chart);
 				})
-				*/ 
+				*/
 				.x(d3.scale.ordinal())
 				.xUnits(dc.units.ordinal)
 				.brushOn(false)
@@ -464,14 +464,14 @@
 
 			var dim = ndx.dimension(function(d){
 				return d.registerAndParliament;
-				
+
 			}, true);
 			var group   = dim.group().reduceSum(function(d) { return 1; });
 
-			var hosttypecolor = {			
+			var hosttypecolor = {
 				"Other":"#bbbbbb"
 			};
-			var graph = dc.barChart(".euRegisterParliament")   
+			var graph = dc.barChart(".euRegisterParliament")
 				.margins({top: 0, right: 3, bottom: 80, left: 20})
 				.height(425)
 				.x(d3.scale.ordinal().domain(["","Rejestr Unii Europejskiej", "Sejmie i Senacie", "Rządzie", ""]))
@@ -488,7 +488,7 @@
 				/*
 				.on("postRender", function( chart ){
 						adjustBarChartLabels(chart);
-				}) 
+				})
 				*/
 				.colorCalculator(function(d, i) {
 					if(d.key == "Rządzie"){
@@ -507,12 +507,12 @@
 					.attr("transform", function(d) { return "rotate(-45, -4, 9) "; });
 			}
 		}
-		
+
 
 		function setword(wd) {
 			$("#search-input").val(wd);
 			var s = wd.toLowerCase();
-			nameEvent.filter(function (d) { 
+			nameEvent.filter(function (d) {
 				return d.indexOf (s) !== -1;} );
 			$(".resetall").attr("disabled",false);
 			throttle();
@@ -520,39 +520,39 @@
 			function throttle() {
 				window.clearTimeout(throttleTimer);
 				throttleTimer = window.setTimeout(function() {
-						dc.redrawAll();
+					dc.redrawAll();
 				}, 250);
 			}
 		}
 
 		//WordCloud Chart
 		function drawCloud() {
-			 var dim = ndx.dimension(function(d) {
-			  return d.subject || "";
-			 })
-			 var group   = dim.group().reduceSum(function(d) { return 1; });
-			 var graph =  dc.wordCloud(".wordcloud")
-			  .rotate(function() { return ~~(Math.random() * 2) * 90; })
-			  .size([550,380])
-			  .dimension(dim)
-			  .maxWords(50)
-			  .padding(5)
-			  .ordinalColors(['#73daeb', '#33cadb', '#039aab', '#037a8b', '#035a6b'])
-			  .group(group)
-			  .scale(d3.scale.linear().domain([10,100]).range([6, 30]))
-			  .textAccessor(function(d) {return d.subject;})
-			  .onClick(function(d){setword(d.key);})
-			  .stopWords (/^(z|rp|2|do|nr|i|na|dot|7%owej|GUO|od|przez|zmanie|ustawy|w|oraz|dot|0|druk|które|dotyczące|dotyczący)$/);
+			var dim = ndx.dimension(function(d) {
+				return d.subject || "";
+			})
+			var group   = dim.group().reduceSum(function(d) { return 1; });
+			var graph =  dc.wordCloud(".wordcloud")
+				.rotate(function() { return ~~(Math.random() * 2) * 90; })
+				.size([550,380])
+				.dimension(dim)
+				.maxWords(50)
+				.padding(5)
+				.ordinalColors(['#73daeb', '#33cadb', '#039aab', '#037a8b', '#035a6b'])
+				.group(group)
+				.scale(d3.scale.linear().domain([10,100]).range([6, 30]))
+				.textAccessor(function(d) {return d.subject;})
+				.onClick(function(d){setword(d.key);})
+				.stopWords (/^(z|rp|2|do|nr|i|na|dot|7%owej|GUO|od|przez|zmanie|ustawy|w|oraz|dot|0|druk|które|dotyczące|dotyczący)$/);
 		}
 
 		//Ministries
 		function drawMinistries() {
 			var dim = ndx.dimension(function(d){ return d.ministriesArray; }, true);
-            var group = dim.group();
-			var hosttypecolor = {			
+			var group = dim.group();
+			var hosttypecolor = {
 				"Other":"#43daeb"
 			};
-			var graph = dc.rowChart(".ministriesRegistrations")   
+			var graph = dc.rowChart(".ministriesRegistrations")
 				.margins({top: 0, right: 3, bottom: 20, left: 3})
 				.height(400)
 				.gap(3)
@@ -568,80 +568,80 @@
 				.dimension(dim)
 				.group(group);
 
-			graph.xAxis().ticks(5).tickFormat(d3.format("d"));	
+			graph.xAxis().ticks(5).tickFormat(d3.format("d"));
 		}
 
 		//Datatables table
 		function drawTable () {
 			var count=0;
 			datatable = $(".table").dataTable({
-				"columnDefs": [ 
-				  {
-				  "searchable": false,
-				  "orderable": true,
-				  "targets": 0,
-				  "defaultContent":"N/A",
-				  "data": function (d, type, val, meta) {
-					 if (!d) return "";
-					 return d.id; 
+				"columnDefs": [
+					{
+						"searchable": false,
+						"orderable": true,
+						"targets": 0,
+						"defaultContent":"N/A",
+						"data": function (d, type, val, meta) {
+							if (!d) return "";
+							return d.id;
+						},
+					},{
+						"searchable": false,
+						"orderable": true,
+						"targets": 1,
+						"defaultContent":"N/A",
+						"data": function (d, type, val, meta) {
+							if (!d) return "";
+							return d.registerDateMinistry;
+						},
+					},{
+						"searchable": false,
+						"orderable": true,
+						"targets": 2,
+						"defaultContent":"N/A",
+						"data": function (d, type, val, meta) {
+							if (!d) return "";
+							return d.entityName;
+						},
+					},{
+						"defaultContent":"N/A",
+						"searchable": false,
+						"orderable": true,
+						"targets": 3,
+						"data": function (d, type, val, meta) {
+							if (!d) return "";
+							return d.Euregister;
+						}
+					},{
+						"defaultContent":"N/A",
+						"searchable": false,
+						"orderable": true,
+						"targets": 4,
+						"data": function(d) {
+							if (!d) return "";
+							return d.category;
+						},
 					},
-				  },{
-				  "searchable": false,
-				  "orderable": true,
-				  "targets": 1,
-				  "defaultContent":"N/A",
-				  "data": function (d, type, val, meta) {
-					 if (!d) return "";
-					 return d.registerDateMinistry; 
+					{
+						"defaultContent":"N/A",
+						"searchable": false,
+						"orderable": true,
+						"targets": 5,
+						"data": function (d, type, val, meta) {
+							if (!d) return "";
+							return d.ministries;
+						}
 					},
-				  },{
-				  "searchable": false,
-				  "orderable": true,
-				  "targets": 2,
-				  "defaultContent":"N/A",
-				  "data": function (d, type, val, meta) {
-					 if (!d) return "";
-					 return d.entityName; 
-					},
-				  },{
-				  "defaultContent":"N/A",
-				  "searchable": false,
-				  "orderable": true,
-				  "targets": 3,
-				  "data": function (d, type, val, meta) {
-					 if (!d) return "";
-					 return d.Euregister;
+					{
+						"defaultContent":"N/A",
+						"searchable": false,
+						"orderable": true,
+						"targets": 6,
+						"data": function (d, type, val, meta) {
+							if (!d) return "";
+							return d.parliamentActivity;
+						}
 					}
-				  },{
-				  "defaultContent":"N/A",
-				  "searchable": false,
-				  "orderable": true,
-				  "targets": 4,
-				  "data": function(d) {
-					 if (!d) return "";
-					 return d.category;
-					},
-				  },
-				   {
-				  "defaultContent":"N/A",
-				  "searchable": false,
-				  "orderable": true,
-				  "targets": 5,
-				  "data": function (d, type, val, meta) {
-					 if (!d) return "";
-					 return d.ministries; 
-					}
-				  },
-                  {
-				  "defaultContent":"N/A",
-				  "searchable": false,
-				  "orderable": true,
-				  "targets": 6,
-				  "data": function (d, type, val, meta) {
-					 if (!d) return "";
-					 return d.parliamentActivity; 
-					}
-				  }
 				],
 				"iDisplayLength" : 100,
 				"bPaginate": true,
@@ -655,37 +655,37 @@
 				"aaData": nameEvent.top(Infinity),
 				"bDestroy": true,
 			});
-		
+
 			function countmeetings(who){
 				var countedmeetings = _.filter(events, function(event, index) {
-				  return event.nombrePasivoFull == who || event.nombreActivoFull == who;
+					return event.nombrePasivoFull == who || event.nombreActivoFull == who;
 				});
 				return countedmeetings.length;
 			}
-				
-			function format (d) {				
+
+			function format (d) {
 				if (!d) return "no data";
 
-                var entityData = _.filter(events,function (m) { return m.entityName == d.entityName  });
+				var entityData = _.filter(events,function (m) { return m.entityName == d.entityName  });
 
 				var s  = "<div class='l_data_container row'>";
-				
+
 				s += "<div class='col-md-12 l_data_container_host'>";
 				s += "<div class='l_name' style='text-align:center;margin-bottom:30px;'><label><strong>"+d.entityName+"</strong></label></div>";
 				s += "<div class='data_container_title' style='text-align:center;'></div>";
-				
+
 				s += "<table><thead><tr><th>Przedstawiciele lob-bysty zawodowego w Sejmie i Senacie</th><th>Klienci</th><th>Data uz-yskania przepustki</th><th>Data wygaśnięcia przepustki</th><th>Przedmiot lobbingu</th></tr></thead><tbody>";
-                 _.each (entityData, function (r) {
+				_.each (entityData, function (r) {
 					s += "<tr><td>"+r.representatives+"</td><td>"+r.clients+"</td><td>"+r.registerDate+"</td><td>"+r.expirationDate+"</td><td>"+r.subject+"</td></tr>";
-                });
-                s += "</tbody></table>";
-				
-				
+				});
+				s += "</tbody></table>";
+
+
 				s += "</div>";
 				s += "</div>";
 				return s;
-				
-			}	
+
+			}
 			//Datatables click function
 			datatable.on('click', 'button', function () {
 				var tr = $(this).closest('tr');
@@ -693,12 +693,12 @@
 				var pre=$(this).parent().parent().next("pre");
 				var row = datatable.DataTable().row( tr.prev()[0] );
 				var d=row.data();
-			 
+
 				if (type == "event") {
 					var sevents =[];
 					_.each(events,function (e){
-					if (e.guestid == d.id)
-					  sevents.push(e);
+						if (e.guestid == d.id)
+							sevents.push(e);
 					});
 					pre.html(JSON.stringify(sevents,null,2));
 					return;
@@ -706,30 +706,30 @@
 
 				var r = (tr.data("representative"));
 				if (!r) {
-				  url="http://api.lobbyfacts.eu/api/1/representative/"+d.id+"?callback=?";
-				  $.getJSON( url, function( data ) {
-					tr.data("representative",data);
-					display (data);
-				  });
-				  return;
+					url="http://api.lobbyfacts.eu/api/1/representative/"+d.id+"?callback=?";
+					$.getJSON( url, function( data ) {
+						tr.data("representative",data);
+						display (data);
+					});
+					return;
 				}
 				display(r,type);
 
 				function display (data) {
-				  switch (type) {
-					case "financial_data":
-					 pre.html(JSON.stringify(data["financial_data"],null,2));
-					  break;
-					case "accreditation":
-					 pre.html(JSON.stringify(data["accreditations"],null,2));
-					  break;
-					default:
-					  pre.html(JSON.stringify(data,null,2));
-				  }
+					switch (type) {
+						case "financial_data":
+							pre.html(JSON.stringify(data["financial_data"],null,2));
+							break;
+						case "accreditation":
+							pre.html(JSON.stringify(data["accreditations"],null,2));
+							break;
+						default:
+							pre.html(JSON.stringify(data,null,2));
+					}
 				}
-				
+
 			});
-		
+
 			datatable.DataTable().on('click', 'tr[role="row"]', function () {
 				var tr = $(this);
 				var row = datatable.DataTable().row( tr );
@@ -751,9 +751,9 @@
 					}
 				}
 			});
-			
+
 			datatable.DataTable().on( 'order.dt search.dt page.dt draw.dt', function () {
-				var thispage = $('.paginate_button.current').html();			
+				var thispage = $('.paginate_button.current').html();
 				var rowi = 0;
 				/*
 			  datatable.DataTable().column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
@@ -772,8 +772,8 @@
 		}
 		//End datatable table function
 
-	
-	   function RefreshTable() {
+
+		function RefreshTable() {
 			dc.events.trigger(function () {
 				var alldata = evt.top(Infinity);
 				if(datatable){
@@ -783,7 +783,7 @@
 				}
 			});
 		}
-		
+
 
 		//Draw graphs
 		drawTable();
@@ -794,15 +794,15 @@
 		drawCloud();
 		drawSubjectAmount();
 
-		dc.renderAll();  
+		dc.renderAll();
 	}
 	//End grid function
 
 	$(function() {
-		
+
 		//Load datasets
 		d3.csv("./data/tab2.csv", function (rows) {
-			
+
 			events = rows;
 			//renderLoaded();
 			var dateFormat = d3.time.format("%d/%m/%Y");
@@ -833,7 +833,7 @@
 				'st20': 'edukacja',
 				'st21': 'kultura'
 			}
-			
+
 			//Loop through dataset and fix/adjust data, also generate the main dataset with 1 entry per entity
 			var thisid = 0;
 			var thisid2 = 0;
@@ -842,21 +842,21 @@
 
 			_.each (events, function (d) {
 
-                //Get year of registration date (Data uzyskania przepustki)
-                d.registerYear = '';
-                if(d.registerDateMinistry && d.registerDateMinistry.split('-').length > 1){
-                    d.registerYear = d.registerDateMinistry.split('-')[0];
-                }
-				
-                d.type = [];
-                //Turning the separate category columns into usable array
-				for (var i = 1; i < 22; i++) { 
+				//Get year of registration date (Data uzyskania przepustki)
+				d.registerYear = '';
+				if(d.registerDateMinistry && d.registerDateMinistry.split('-').length > 1){
+					d.registerYear = d.registerDateMinistry.split('-')[0];
+				}
+
+				d.type = [];
+				//Turning the separate category columns into usable array
+				for (var i = 1; i < 22; i++) {
 					if(d['st'+i] == 1){
 						d.type.push(subjectTypes['st'+i]);
 					};
 				}
 				console.log(d.type.length);
-				
+
 				d.num = thisid;
 				thisid ++;
 
@@ -920,12 +920,12 @@
 			//grid("#ec",events);
 			$('#loader-container').hide();
 			grid('#ec',events_singleEntry);
-		}); 
+		});
 
 		//Search field functionality
 		$("#search-input").keyup (function () {
 			var s = $(this ).val().toLowerCase();
-			nameEvent.filter(function (d) { 
+			nameEvent.filter(function (d) {
 				return d.indexOf (s) !== -1;} );
 			$(".resetall").attr("disabled",false);
 			throttle();
@@ -933,15 +933,15 @@
 			function throttle() {
 				window.clearTimeout(throttleTimer);
 				throttleTimer = window.setTimeout(function() {
-						dc.redrawAll();
+					dc.redrawAll();
 				}, 250);
 			}
 		});
-		
+
 		//Change selected term
 		$( "#termselect" ).change(function () {
 			var s = "termoffice:"+$( "select option:selected" ).text()+" ";
-			nameEvent.filter(function (d) { 
+			nameEvent.filter(function (d) {
 				return d.indexOf (s) !== -1;} );
 			$(".resetall").attr("disabled",false);
 			throttle();
@@ -949,11 +949,11 @@
 			function throttle() {
 				window.clearTimeout(throttleTimer);
 				throttleTimer = window.setTimeout(function() {
-						dc.redrawAll();
+					dc.redrawAll();
 				}, 250);
 			}
-		  });
-		 
+		});
+
 		//Reset button
 		$(".resetall").click(function() {
 			nameEvent.filter(null);
@@ -962,14 +962,14 @@
 			$("#search-input").val("");
 			$(".resetall").attr("disabled",true);
 			$( "#termselect" ).val("");
-		}); 
+		});
 
 		//On window resize redraw for responsive charts
 		$(window).on('resize', function(){
 			dc.renderAll();
 		});
 
-	});      
+	});
 
 </script>
 </body>

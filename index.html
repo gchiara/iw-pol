@@ -93,7 +93,7 @@
 						
 						<div class="col-md-3 filter_number">
 							<div id="mep_number" class="dc-data-count">
-								<span id="abig_number" class="big_number filter-count"></span>z <strong class="total-count"></strong><br /> posiedzenie
+								<span id="abig_number" class="big_number filter-count"></span>z <strong class="total-count"></strong>
 							</div>
 						</div>
 						<div class="col-md-3 filter_number">
@@ -127,7 +127,7 @@
 							<h3>Kto lobbuje w parlamencie? Sektory</h3>
 							<div class="info_chart">
 								<span class="info">info</span>
-								<p class="desc">Kto lobbuje w parlamencie? Sektory</p>
+								<p class="desc">Sprawdź, jakie organizacje i przedsiębiorstwa prowadzą działalność w parlamencie.</p>
 							</div>
 							<div class="category-pie chart-full"></div>
 							<div class="label"></div>
@@ -140,7 +140,7 @@
 							<h3>Top 10 organizacji</h3>
 							<div class="info_chart">
 								<span class="info">info</span>
-								<p class="desc">Top 10 organizacji</p>
+								<p class="desc">Sprawdź, które z organizacji społecznych i branżowych najczęściej uczestniczą w posiedzeniach komisji sejmowych.</p>
 							</div>
 							<div class="top10-a chart-full"></div>
 							<div class="label"></div>
@@ -153,7 +153,7 @@
 							<h3>Top 10 przedsiębiorstw</h3>
 							<div class="info_chart">
 								<span class="info">info</span>
-								<p class="desc">Top 10 przedsiębiorstw</p>
+								<p class="desc">Sprawdź, jakie przedsiębiorstwa prywatne, państwowe i spółdzielnie najczęściej uczestniczą w posiedzeniach komisji sejmowych.</p>
 							</div>
 							<div class="top10-b chart-full"></div>
 							<div class="label"></div>
@@ -163,10 +163,10 @@
 					<div class="col-md-3">
 						<!-- TOP 10 C -->
 						<div class="chart_box">
-							<h3>Top 10 związków za-wodowych</h3>
+							<h3>Top 10 związków zawodowych</h3>
 							<div class="info_chart">
 								<span class="info">info</span>
-								<p class="desc">Top 10 związków za-wodowych</p>
+								<p class="desc">Sprawdź, jakie związki zawodowe najczęściej uczestniczą w posiedzeniach komisji sejmowych.</p>
 							</div>
 							<div class="top10-c chart-full"></div>
 							<div class="label"></div>
@@ -196,10 +196,10 @@
 					<div class="col-md-4" style="margin-top:0px;">
 						<!-- TOP COMMITTEES -->
 						<div class="chart_box" id="group_container">
-							<h3>Komisje sejmowe</h3>
+							<h3>Komisje, w których uczestniczy najwięcej osób z zewnątrz</h3>
 							<div class="info_chart">
 								<span class="info">info</span>
-								<p class="desc">Sprawdź, ilu zewnętrznych uczestników bierze udział w posiedzeniach komisji sejmowych.</p>
+								<p class="desc">Sprawdź, na posiedzenia których komisji sejmowych przychodzi najwięcej zewnętrznych uczestników spoza składu poselskiego.</p>
 							</div>
 							<div class="topcommittee chart-full"></div>
 							<div class="label">Liczba uczestników</div>
@@ -209,10 +209,10 @@
 					<div class="col-md-4" style="margin-top:0px;">
 						<!-- ENTITIES -->
 						<div class="chart_box" id="categoria">
-							<h3>Kto lobbuje w parlamencie? Instytucje<!--span class="info">info</span--></h3>
+							<h3>Kto uczestniczy w posiedzeniach komisji sejmowych?<!--span class="info">info</span--></h3>
 							<div class="info_chart">
 								<span class="info">info</span>
-								<p class="desc">Sprawdź, z jakich sektorów wywodzą się uczestnicy posiedzeń komisji sejmowych.</p>
+								<p class="desc">Sprawdź, jakie instytucje, organizacje i firmy najczęściej są obecne na posiedzeniach komisji sejmowych.</p>
 							</div>
 							<div class="topentities" style="width:100%;"></div>
 							<div class="legend">
@@ -425,7 +425,8 @@
 				.colorAccessor(function (d, i){console.log(i);return i;})
 				//.colors(d3.scale.category20())
 				//.colors(d3.scale.ordinal().range(['#0f4c79','#1f5982','#386b90','#517e9e','#6b91ac','#89a7bd']))
-				.colors(d3.scale.ordinal().range(['#205983','#306e9a','#4487b5','#599fd2','#71bdf3']))
+				// .colors(d3.scale.ordinal().range(['#205983','#306e9a','#4487b5','#599fd2','#71bdf3']))
+				.colors(d3.scale.ordinal().range(['#003f5c', '#665191', '#d45087', '#ff7c43', '#ffa600', '#2f4b7c', '#a05195', '#f95d6a']))
 				//.colors(d3.scale.linear().range(['red','green']))
 				.label(function (d) {
 					return "";
@@ -577,7 +578,8 @@
 				.cap(7)
 				.group(group)
 				.colorAccessor(function (d, i){console.log(i);return i;})
-				.colors(d3.scale.ordinal().range(['#205983','#28638e','#306e9a','#3b79a7','#4487b5','#4f94c3','#599fd2','#64ade0','#71bdf3']))
+				// .colors(d3.scale.ordinal().range(['#205983','#28638e','#306e9a','#3b79a7','#4487b5','#4f94c3','#599fd2','#64ade0','#71bdf3']))
+				.colors(d3.scale.ordinal().range(['#003f5c', '#2f4b7c', '#665191', '#a05195', '#d45087', '#f95d6a', '#ff7c43', '#ffa600']))
 				//.colors(d3.scale.category20())
 				.label(function (d) {
 					return "";

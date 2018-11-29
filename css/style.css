@@ -1,29 +1,29 @@
 /*@import url("http://fast.fonts.net/lt/1.css?apiType=css&c=7bacdeec-00ae-4450-bf23-75f7f74f9628&fontids=739810,739467");*/
 @font-face{
-font-family:"Helvetica W02 Light";
-src:url("../fonts/739810/ff80873b-6ac3-44f7-b029-1b4111beac76.eot?#iefix");
-src:url("../fonts/739810/ff80873b-6ac3-44f7-b029-1b4111beac76.eot?#iefix") format("eot"),url("../fonts/739810/5f69edb2-7ba6-4bcf-9266-186b412dc27c.woff2") format("woff2"),url("../fonts/739810/80c34ad2-27c2-4d99-90fa-985fd64ab81a.woff") format("woff"),url("../fonts/739810/b8cb02c2-5b58-48d8-9501-8d02869154c2.ttf") format("truetype"),url("../fonts/739810/92c941ea-2b06-4b72-9165-17476d424d6c.svg#92c941ea-2b06-4b72-9165-17476d424d6c") format("svg");
+	font-family:"Helvetica W02 Light";
+	src:url("../fonts/739810/ff80873b-6ac3-44f7-b029-1b4111beac76.eot?#iefix");
+	src:url("../fonts/739810/ff80873b-6ac3-44f7-b029-1b4111beac76.eot?#iefix") format("eot"),url("../fonts/739810/5f69edb2-7ba6-4bcf-9266-186b412dc27c.woff2") format("woff2"),url("../fonts/739810/80c34ad2-27c2-4d99-90fa-985fd64ab81a.woff") format("woff"),url("../fonts/739810/b8cb02c2-5b58-48d8-9501-8d02869154c2.ttf") format("truetype"),url("../fonts/739810/92c941ea-2b06-4b72-9165-17476d424d6c.svg#92c941ea-2b06-4b72-9165-17476d424d6c") format("svg");
 }
 @font-face{
-font-family:"Helvetica W02 Bd Cn";
-src:url("../fonts/739467/41d468de-0241-4086-8be4-21f7a002cf7d.eot?#iefix");
-src:url("../fonts/739467/41d468de-0241-4086-8be4-21f7a002cf7d.eot?#iefix") format("eot"),url("../fonts/739467/7da3dc49-a6ed-4109-a2da-c0ac6f52c294.woff2") format("woff2"),url("../fonts/739467/a986da64-fc96-499e-a852-8b33bf8d7825.woff") format("woff"),url("../fonts/739467/f4cc47e5-a53d-41f6-8719-87302b7e4a58.ttf") format("truetype"),url("../fonts/739467/7b6755aa-ec63-418c-9db9-088d83b0352e.svg#7b6755aa-ec63-418c-9db9-088d83b0352e") format("svg");
+	font-family:"Helvetica W02 Bd Cn";
+	src:url("../fonts/739467/41d468de-0241-4086-8be4-21f7a002cf7d.eot?#iefix");
+	src:url("../fonts/739467/41d468de-0241-4086-8be4-21f7a002cf7d.eot?#iefix") format("eot"),url("../fonts/739467/7da3dc49-a6ed-4109-a2da-c0ac6f52c294.woff2") format("woff2"),url("../fonts/739467/a986da64-fc96-499e-a852-8b33bf8d7825.woff") format("woff"),url("../fonts/739467/f4cc47e5-a53d-41f6-8719-87302b7e4a58.ttf") format("truetype"),url("../fonts/739467/7b6755aa-ec63-418c-9db9-088d83b0352e.svg#7b6755aa-ec63-418c-9db9-088d83b0352e") format("svg");
 }
 
 
 /* GENERIC ELEMENTS */
 
 body {
-   font-family: 'Helvetica W02 Light', "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
-   line-height: 1.6em;
-   color: #5d5d5d;
-   padding-bottom: 90px;
+	font-family: 'Helvetica W02 Light', "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	line-height: 1.6em;
+	color: #5d5d5d;
+	padding-bottom: 90px;
 }
 
 h1,h2,h3,h4,h5,h6 {
-   font-family: 'Helvetica W02 Bd Cn', "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-   font-weight: normal;
-   text-transform: uppercase;
+	font-family: 'Helvetica W02 Bd Cn', "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-weight: normal;
+	text-transform: uppercase;
 }
 
 h1{
@@ -48,7 +48,7 @@ h3{
 }
 
 a {
-	-webkit-transition: all .15s ease-out 0s;	
+	-webkit-transition: all .15s ease-out 0s;
 	-moz-transition: all .15s ease-out 0s;
 	transition: all .15s ease-out 0s;
 }
@@ -162,7 +162,7 @@ th{
 }
 
 #budget_info{
-	
+
 }
 
 #meetings_info{
@@ -200,7 +200,7 @@ p.desc{
 	padding: 15px;
 	position: relative;
 	top: 58px;
-	
+
 	z-index: 1;
 	display: none;
 }
@@ -211,8 +211,8 @@ p.desc{
 /* CLASSES */
 
 .col-centered {
-   float: none;
-   margin: 0 auto;
+	float: none;
+	margin: 0 auto;
 }
 
 .more{
@@ -342,7 +342,7 @@ ul.nav.navbar-right li.active a{
 	.navbar-collapse li{
 		border-bottom: 1px solid #1b6da6;
 	}
-	
+
 	.navbar-collapse ul.navbar-right{
 		margin-bottom: 0;
 		margin-top: 0;
@@ -381,13 +381,13 @@ ul.nav.navbar-right li.active a{
 	nav.navbar{
 		height: 80px;
 	}
-	
+
 	div#ti_logo_container{
 		height: 80px;
 		padding-left: .8em;
 		padding-right: .8em;
 	}
-	
+
 	.navbar .navbar-nav > li > a{
 		color: #FFF!important;
 		display: inline-block;
@@ -395,16 +395,16 @@ ul.nav.navbar-right li.active a{
 		width: 140px;
 		border-right: 1px solid rgba(0,0,0,.1);
 	}
-	
+
 	.navbar .navbar-nav > li > a:hover{
 		background: rgba(0, 0, 0, .1);
 	}
-	
+
 	.nav li#mi_tool_btn.active a{
 		background: #039AAB;
 		color: #FFF;
 	}
-	
+
 	.nav li#cm_tool_btn.active a{
 		background: #004c79;
 		color: #FFF;
@@ -413,32 +413,32 @@ ul.nav.navbar-right li.active a{
 	.lobbyists-tab .nav li#cm_tool_btn.active a {
 		background: #039AAB;
 	}
-	
+
 	.nav li#bl_tool_btn.active a{
 		background: #8d1556;
 		color: #FFF;
 	}
-	
+
 	.nav.navbar-right li a{
 		width: auto;
 		border: none;
 	}
-	
+
 	ul.navbar-nav#title_container li{
 	}
-	
+
 	a#page_title{
 		margin-top: 12px;
 		line-height: 1.4em;
 		padding-right: 0;
 		padding-left: .5em;
 	}
-	
+
 	div#ti_logo_container a#ti_logo{
 		width: 25%;
 		height: 60px;
 	}
-	
+
 	.navbar-collapse ul.navbar-right li a{
 		display: block;
 		height: 80px;
@@ -458,11 +458,11 @@ ul.nav.navbar-right li.active a{
 		width: 56%;
 		height: 60px;
 	}
-	
+
 	div#ti_logo_container{
 		width: 320px;
 	}
-	
+
 	a#page_title{
 		font-size: 14px;
 		text-transform: uppercase;
@@ -479,8 +479,8 @@ ul.nav.navbar-right li.active a{
 
 div#ti_logo_container a#ti_logo {
 	background-image: url("../img/ti_logo.png");
-	//height: 60px;
-	//width: 56%;
+//height: 60px;
+//width: 56%;
 	height: 75px;
 	position: relative;
 	top: -5px;
@@ -560,41 +560,41 @@ div#ti_logo_container a#ti_logo {
 	#about_social{
 		margin-bottom: 0em;
 	}
-	
+
 	#about_wrap.cm_header{
 		background: #004c79 url(../img/bg_hands-01.png) repeat-y -130% top;
 		background-size: 70%;
 	}
-	
+
 	#about_wrap.cm_header #about_container{
 		background: url('../img/icon_hands.png') no-repeat left center;
 		background-size: 16%;
 	}
-	
+
 	#about_wrap.bl_header{
 		background: #8d1556 url(../img/bg_suit-01.png) repeat-y -45% top;
 		background-size: 50%;
 	}
-	
+
 	#about_wrap.bl_header #about_container{
 		background: url('../img/icon_suit.png') no-repeat left center;
 		background-size: 25%;
 	}
-	
+
 	#about_wrap.mi_header{
 		background: #039AAB url(../img/bg_money-01.png) repeat-y -130% top;
 		background-size: 70%;
 	}
-	
+
 	#about_wrap.mi_header #about_container{
 		background: url(../img/icon_money.png) no-repeat left center;
 		background-size: 25%;
 	}
-	
+
 	#about_wrap #about_container{
 		padding-bottom: 1em;
 	}
-	
+
 	#about_wrap p{
 		margin-bottom: 1em;
 		margin-top: 1em;
@@ -606,7 +606,7 @@ div#ti_logo_container a#ti_logo {
 		background: #004c79 url(../img/bg_hands-01.png) repeat-y -41% top;
 		background-size: 45%;
 	}
-	
+
 	#about_wrap.cm_header #about_container{
 		background: url('../img/icon_hands.png') no-repeat 5% center;
 		background-size: 16%;
@@ -616,22 +616,22 @@ div#ti_logo_container a#ti_logo {
 		background: #8d1556 url(../img/bg_suit-01.png) repeat-y -40% top;
 		background-size: 45%;
 	}
-	
+
 	#about_wrap.bl_header #about_container{
 		background: url(../img/icon_suit.png) no-repeat left center;
 		background-size: 24%;
 	}
-	
+
 	#about_wrap.mi_header{
 		background: #039AAB url(../img/bg_money-01.png) repeat-y -40% top;
 		background-size: 45%;
 	}
-	
+
 	#about_wrap.mi_header #about_container{
 		background: url(../img/icon_money.png) no-repeat left center;
 		background-size: 25%;
 	}
-	
+
 	#about_wrap p{
 		margin-bottom: 1em;
 		margin-top: 1em;
@@ -651,8 +651,8 @@ div#ti_logo_container a#ti_logo {
 	margin: 0 auto;
 	text-indent: -984em;
 	-webkit-transition: all .35s ease-out 0s;
-	   -moz-transition: all .35s ease-out 0s;
-		    transition: all .35s ease-out 0s;
+	-moz-transition: all .35s ease-out 0s;
+	transition: all .35s ease-out 0s;
 }
 #collapse_about.mi_collapse a{
 	background: #039AAB url(../img/collapse_mi.svg) no-repeat center top;
@@ -771,28 +771,28 @@ div#ti_logo_container a#ti_logo {
 	#resetall_container{
 		padding: 0;
 	}
-	
+
 	#filter_wrap{
 		height: 8.5vh;
 		min-height: 80px;
 		box-shadow: 0px -3px 0px rgba(0,0,0,.1);
 	}
-	
+
 	#filter_wrap #filter_field_container p{
 		float: none;
 		margin-bottom: 5px;
 	}
-	
+
 	#filter_wrap .input-group{
 		width: 100%;
 		float: none;
 	}
-	
+
 	#filter_wrap input#search-input{
 		margin-bottom: 0px;
 		padding: 0 0 0 .5em;
 	}
-	
+
 	#filter_wrap .btn{
 		margin-bottom: 0;
 		height: 8.5vh;
@@ -802,23 +802,23 @@ div#ti_logo_container a#ti_logo {
 		width: 100%;
 		background: rgba(0, 0, 0,.3) url(../img/reset.svg) center 7% no-repeat;
 	}
-	
+
 	#filter_wrap .btn:hover{
 		background: rgba(0, 0, 0,.4) url(../img/reset.svg) center 7% no-repeat;
 	}
-	
-	
+
+
 	#filter_wrap .btn[disabled=disabled]{
 		visibility: hidden;
 		display: block;
 	}
-	
-	
+
+
 	#filter_wrap #currently_selected_text{
 		margin-top: 15px;
 		width: 100px;
 	}
-	
+
 	#filter_wrap .big_number{
 		font-family: 'Helvetica W02 Bd Cn', 'Neue Helvetica 57 Condensed', "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 		font-size: 1.8em;
@@ -828,12 +828,12 @@ div#ti_logo_container a#ti_logo {
 		color: #FFF;
 		font-weight: normal;
 	}
-	
+
 	#filter_wrap .filter_number{
-		line-height: 1.2em;
+		line-height: 2em;
 		padding: 0;
 	}
-	
+
 	#filter_wrap .filter_long{
 		margin-top: 16px;
 	}
@@ -843,7 +843,7 @@ div#ti_logo_container a#ti_logo {
 	#filter_numbers{
 		display: block;
 	}
-	
+
 	#filter_wrap #filter_field_container p{
 		margin-bottom: 0;
 		width: 100%;
@@ -851,11 +851,11 @@ div#ti_logo_container a#ti_logo {
 		margin-bottom: 8px;
 		letter-spacing: .05em;
 	}
-	
+
 	#filter_wrap .input-group{
 		width: 100%;
 	}
-	
+
 	#filter_wrap input#search-input{
 		width: 100%;
 		height: 36px;
@@ -886,11 +886,11 @@ div#ti_logo_container a#ti_logo {
 	padding-left: 28px;
 	background-image: url(../img/hidechart.svg);
 	background-repeat: no-repeat;
-	
+
 }
 
 #hidden_charts_wrap{
-	padding-top: 0;	
+	padding-top: 0;
 }
 
 #view_charts.hiddencharts{
@@ -944,7 +944,7 @@ div#ti_logo_container a#ti_logo {
 }
 
 .legend div.enf:before {
-  background:#A1480D;
+	background:#A1480D;
 }
 
 .legend div.gue:before{
@@ -1002,11 +1002,11 @@ div#ti_logo_container a#ti_logo {
 }
 
 #avg_score_container div#avg_score {
-    font-size: 140px;
-    letter-spacing: -.1em;
-    margin-top:50px;
-    height: 70px;
-	font-family:"Helvetica W02 Bd Cn";    
+	font-size: 140px;
+	letter-spacing: -.1em;
+	margin-top:50px;
+	height: 70px;
+	font-family:"Helvetica W02 Bd Cn";
 }
 
 #sum_side, #avg_side{
@@ -1051,11 +1051,11 @@ td.dc-table-column._5,
 td.dc-table-column._6{
 	text-align:left;
 }
-		
+
 #ep2014list table, .dc-data-grid {clear:both;}
 .dc-table-label {
-	background: #F5F5F5; 
-	font-weight:bold; 
+	background: #F5F5F5;
+	font-weight:bold;
 }
 
 .x line {
@@ -1073,11 +1073,11 @@ table{
 .dc-grid-group {
 	background-color: #F5F5F5;
 	border: 1px solid #E3E3E3;
-    border-radius: 4px;
+	border-radius: 4px;
 
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
-    margin-bottom: 20px;
-    min-height: 20px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+	margin-bottom: 20px;
+	min-height: 20px;
 	padding: 10px;
 }
 
@@ -1109,19 +1109,19 @@ tr.header th.header{
 	border-right: 1px solid #bfd3de;
 	cursor: pointer;
 	font-size: 1em;
-	padding: .6em 1.6em .6em .6em;	
+	padding: .6em 1.6em .6em .6em;
 }
 
 th.header{
-	
+
 }
 
 table.dataTable thead th.header.sorting_desc {
-  background-image: url(../img/sorteddown.svg);
+	background-image: url(../img/sorteddown.svg);
 }
 
 table.dataTable thead th.header.sorting_asc {
-  background-image: url(../img/sortedup.svg);
+	background-image: url(../img/sortedup.svg);
 }
 
 table.dataTable thead th.header.sorting_disabled{
@@ -1209,14 +1209,14 @@ div.range .pie-slice {fill:#333 ;}
 }
 
 .dc-chart g.axis.x text{
-  cursor:pointer;
-  pointer-events: auto;
+	cursor:pointer;
+	pointer-events: auto;
 }
 
 div.dc-chart g.row text {fill:black}
 
 .dc-chart .pie-slice {
-  fill:black;
+	fill:black;
 }
 
 .unregistered {color:darkred}
@@ -1338,7 +1338,7 @@ ol{
 
 ol strong{
 	display: block;
-	
+
 }
 
 ol li{
@@ -1419,7 +1419,7 @@ td.dc-table-column._6
 {text-align:left;}
 
 #mep_number {
-		margin-top: 0.1em;}
+	margin-top: 0.1em;}
 .l_data_container {
 	padding: 10px 15px;
 	margin: -10px;
@@ -1444,11 +1444,11 @@ td.dc-table-column._6
 	color: #333;
 }
 .l_data_container_host {
-	//border: 4px solid #0f4c79 !important;
-	//border-right: 3px solid #0f4c79 !important;
+//border: 4px solid #0f4c79 !important;
+//border-right: 3px solid #0f4c79 !important;
 	border: 2px solid #0f4c79 !important;
 	margin-top: 0 !important;
-	//height: 230px;
+//height: 230px;
 	padding: 20px 35px !important;
 	background: #fff;
 }
@@ -1462,7 +1462,7 @@ td.dc-table-column._6
 	border: 4px solid #8e1556 !important;
 	border-left: 3px solid #8e1556 !important;
 	margin-top: 0 !important;
-	//height: 230px;
+//height: 230px;
 	padding: 10px 15px !important;
 	background: #fff;
 }
@@ -1476,7 +1476,7 @@ td.dc-table-column._6
 	font-size: 15px;
 	font-weight: 800;
 	text-transform: uppercase;
-	
+
 }
 .legend div.individual::before {
 	background: #af0700 none repeat scroll 0 0;
@@ -1534,10 +1534,10 @@ div#ti_logo_container {
 }
 
 .lobbyists-tab {
-	//73264d
+//73264d
 }
 .lobbyists-tab #filter_wrap.filter_cm {
-    background: #039AAB;
+	background: #039AAB;
 }
 .lobbyists-tab .dc-data-count .filter-count, .dc-data-count .total-count {
 	color: #fff;
@@ -1547,12 +1547,12 @@ div#ti_logo_container {
 .about-container {
 	background: #004c79;
 	color: #fff;
-	padding: 20px 50px;	
+	padding: 20px 50px;
 	text-align: center;
 	margin-bottom: 30px;
 }
 .about-container-lobbyists {
-	//background: #73264d;
+//background: #73264d;
 	background: #039AAB;
 }
 
@@ -1603,25 +1603,29 @@ div#ti_logo_container {
 	height: 120px;
 	-webkit-animation: spin 2s linear infinite;
 	animation: spin 2s linear infinite;
-  }
-  
-  @-webkit-keyframes spin {
+}
+
+@-webkit-keyframes spin {
 	0% { -webkit-transform: rotate(0deg); }
 	100% { -webkit-transform: rotate(360deg); }
-  }
-  
-  @keyframes spin {
+}
+
+@keyframes spin {
 	0% { transform: rotate(0deg); }
 	100% { transform: rotate(360deg); }
-  }
+}
 
 
 
-  .registeryear .axis.x .tick text {
+.registeryear .axis.x .tick text {
 	transform: translate(-10px,5px) rotate(-45deg);
 	text-anchor: end !important;
-  }
-  .euRegisterParliament .axis.x .tick text {
+}
+.euRegisterParliament .axis.x .tick text {
 	transform: translate(-10px,1px) rotate(-45deg);
 	text-anchor: end !important;
-  }
+}
+
+.toc li {
+	margin-bottom: 0.1em;
+}
